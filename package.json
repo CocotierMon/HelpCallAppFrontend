@@ -50,7 +50,13 @@
       "cdigit": "2.5.6",
       "chance": "1.1.7",
       "@vaadin/vaadin-avatar": "1.0.0",
-      "open": "^7.2.1"
+      "open": "^7.2.1",
+      "leaflet.heat": "0.2.0",
+      "leaflet-kmz": "1.0.4",
+      "leaflet-canvas-marker": "0.2.1",
+      "leaflet.markercluster": "1.4.1",
+      "leaflet.fullscreen": "1.6.0",
+      "leaflet": "^1.6.0"
     },
     "devDependencies": {
       "webpack-babel-multi-target-plugin": "2.3.3",
@@ -63,7 +69,7 @@
       "webpack-merge": "4.2.2",
       "webpack-dev-server": "3.11.0"
     },
-    "hash": "2c0578558278ac3fdd27fbd4746aaf7c4eaca4d087ec6801af0688ea0688501c"
+    "hash": "637320fbbc90d1f24ee27f629806e292d80ae98dfae267d1fd088e44e1b1bcc8"
   },
   "dependencies": {
     "lit-element": "^2.2.1",
@@ -113,7 +119,8 @@
     "cdigit": "2.5.6",
     "chance": "1.1.7",
     "@vaadin/vaadin-avatar": "1.0.0",
-    "open": "^7.2.1"
+    "open": "^7.2.1",
+    "leaflet": "1.6.0"
   },
   "devDependencies": {
     "webpack-babel-multi-target-plugin": "2.3.3",

@@ -20,8 +20,6 @@ import com.vaadin.flow.component.tabs.TabsVariant;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.server.PWA;
-import com.vaadin.flow.theme.Theme;
-import com.helpcall.helpcallapp.views.main.MainView;
 import com.helpcall.helpcallapp.views.start.StartView;
 import com.helpcall.helpcallapp.views.howdoesitwork.HowDoesItWorkView;
 import com.helpcall.helpcallapp.views.map.MapView;
@@ -92,13 +90,19 @@ public class MainView extends AppLayout {
     }
 
     private Component[] createMenuItems() {
-        return new Tab[]{createTab("Start", StartView.class), createTab("Jak to działa", HowDoesItWorkView.class),
-                createTab("Mapa", MapView.class), createTab("Korzyści", BenefitsView.class),
-                createTab("Statystyki", StatisticsView.class), createTab("Opinie", OpinionsView.class),
-                createTab("Potrzebuję pomocy", NeedHelpView.class), createTab("Rejestracja", RegistrationView.class),
+        return new Tab[]{
+                createTab("Start", StartView.class),
+                createTab("Jak to działa", HowDoesItWorkView.class),
+                createTab("Mapa", MapView.class),
+                createTab("Korzyści", BenefitsView.class),
+                createTab("Statystyki", StatisticsView.class),
+                createTab("Opinie", OpinionsView.class),
+                createTab("Potrzebuję pomocy", NeedHelpView.class),
+                createTab("Zaloguj się", LoginView.class),
+                createTab("Rejestracja", RegistrationView.class),
                 createTab("Rejestracja - potrzebuję pomocy", RegistrationNeedHelpView.class),
-                createTab("Rejestracja - wolontariusz", RegistrationVolunteerView.class),
-                createTab("Zaloguj się", LoginView.class)};
+                createTab("Rejestracja - wolontariusz", RegistrationVolunteerView.class)
+                };
     }
 
     private static Tab createTab(String text, Class<? extends Component> navigationTarget) {

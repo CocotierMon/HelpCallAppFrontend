@@ -17,12 +17,6 @@ import com.helpcall.helpcallapp.views.main.MainView;
 @Tag("need-help-view")
 public class NeedHelpView extends PolymerTemplate<NeedHelpViewModel> {
 
-    // This is the Java companion file of a design
-    // You can find the design file in
-    // /frontend/views/views/needhelp/need-help-view.js
-    // The design can be easily edited by using Vaadin Designer
-    // (vaadin.com/designer)
-
     public static interface NeedHelpViewModel extends TemplateModel {
     }
 
