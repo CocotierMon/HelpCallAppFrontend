@@ -1,8 +1,7 @@
-package com.helpcall.helpcallapp.client.volunteer;
+package com.helpcall.helpcallapp.client;
 
 import com.helpcall.helpcallapp.config.BackEndConfig;
 import com.helpcall.helpcallapp.domain.InstitutionDto;
-import com.helpcall.helpcallapp.domain.NeedDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -16,22 +15,22 @@ import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
-public class NeedBackendClient {
+public class InstitutionBackendClient {
 
     private final RestTemplate restTemplate;
     private final BackEndConfig backEndConfig;
 
-    public List<NeedDto> getAllNeeds() {
-        Optional<NeedDto[]> needs = Optional.ofNullable(
-                restTemplate.getForObject(getNeedsByUri(), NeedDto[].class));
-        return needs.map(Arrays::asList).orElseGet(ArrayList::new);
+    public List<InstitutionDto> getAllInstitutions() {
+        Optional<InstitutionDto[]> institutions = Optional.ofNullable(
+                restTemplate.getForObject(getInstitutionsByUri(), InstitutionDto[].class));
+        return institutions.map(Arrays::asList).orElseGet(ArrayList::new);
     }
 
-    private URI getNeedsByUri() {
+    private URI getInstitutionsByUri() {
         assert backEndConfig != null;
         return UriComponentsBuilder.fromHttpUrl(backEndConfig.getBackEndUrl())
                 .port(backEndConfig.getPort())
-                .path("/needs")
+                .path("/institutions")
                 .encode()
                 .build()
                 .toUri();

@@ -1,6 +1,6 @@
 package com.helpcall.helpcallapp.service;
 
-import com.helpcall.helpcallapp.client.volunteer.NeedsBoardBackendClient;
+import com.helpcall.helpcallapp.client.NeedsBoardBackendClient;
 import com.helpcall.helpcallapp.domain.NeedsBoardDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

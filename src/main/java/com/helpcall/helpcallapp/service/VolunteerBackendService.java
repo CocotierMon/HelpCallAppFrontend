@@ -1,6 +1,6 @@
 package com.helpcall.helpcallapp.service;
 
-import com.helpcall.helpcallapp.client.volunteer.VolunteerBeckendClient;
+import com.helpcall.helpcallapp.client.VolunteerBeckendClient;
 import com.helpcall.helpcallapp.domain.VolunteerDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

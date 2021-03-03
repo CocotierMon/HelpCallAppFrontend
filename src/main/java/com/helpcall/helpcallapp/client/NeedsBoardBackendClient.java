@@ -1,4 +1,4 @@
-package com.helpcall.helpcallapp.client.volunteer;
+package com.helpcall.helpcallapp.client;
 
 import com.helpcall.helpcallapp.config.BackEndConfig;
 import com.helpcall.helpcallapp.domain.NeedsBoardDto;
