@@ -1,5 +1,6 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
 import '@vaadin/vaadin-button/src/vaadin-button.js';
+import '@vaadin/vaadin-ordered-layout/src/vaadin-horizontal-layout.js';
 
 class StartView extends PolymerElement {
 
@@ -12,6 +13,7 @@ class StartView extends PolymerElement {
                 }
             </style>
 <vaadin-vertical-layout style="width: 100%; height: 100%;">
+ <vaadin-horizontal-layout theme="spacing" id="vaadinHorizontalLayout"></vaadin-horizontal-layout>
  <vaadin-horizontal-layout class="header" style="width: 100%; flex-basis: var(--lumo-size-l); flex-shrink: 0; background-color: var(--lumo-contrast-10pct); align-self: center; justify-content: center; align-items: center;">
   <h1 style="align-self: center; flex-grow: 0; margin: var(--lumo-space-m); padding: var(--lumo-space-m);">Witaj na stronie aplikacji HelpCallApp!</h1>
  </vaadin-horizontal-layout>
@@ -25,7 +27,7 @@ class StartView extends PolymerElement {
  </vaadin-horizontal-layout>
  <vaadin-horizontal-layout class="footer" style="width: 100%; flex-basis: var(--lumo-size-l); flex-shrink: 0; background-color: var(--lumo-contrast-10pct); margin: var(--lumo-space-m); padding: var(--lumo-space-m); flex-direction: row; align-items: center; justify-content: space-around; height: 100%;">
   <vaadin-button theme="primary" style="width: 100%;">
-   Zostań wolontariuszem!
+    Zostań wolontariuszem! 
   </vaadin-button>
  </vaadin-horizontal-layout>
 </vaadin-vertical-layout>
