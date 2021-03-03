@@ -17,12 +17,6 @@ import com.helpcall.helpcallapp.views.main.MainView;
 @Tag("how-does-it-work-view")
 public class HowDoesItWorkView extends PolymerTemplate<HowDoesItWorkViewModel> {
 
-    // This is the Java companion file of a design
-    // You can find the design file in
-    // /frontend/views/views/howdoesitwork/how-does-it-work-view.js
-    // The design can be easily edited by using Vaadin Designer
-    // (vaadin.com/designer)
-
     public static interface HowDoesItWorkViewModel extends TemplateModel {
     }
 

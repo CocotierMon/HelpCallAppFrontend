@@ -20,6 +20,8 @@ class StartView extends PolymerElement {
  <vaadin-horizontal-layout style="width: 100%; flex-grow: 1; flex-shrink: 1; flex-basis: auto; align-self: center; justify-content: space-evenly; margin: var(--lumo-space-m); padding: var(--lumo-space-m); margin-bottom: var(--lumo-space-xs); padding-bottom: var(--lumo-space-xs);">
   <vaadin-vertical-layout theme="spacing" style="width: 50%;">
    <h1 style="align-self: center; margin: var(--lumo-space-m); padding: var(--lumo-space-m); flex-grow: 0; margin-bottom: var(--lumo-space-xs); padding-bottom: var(--lumo-space-xs);">HelpCallApp - aplikacja, która pomaga pomagać.</h1>
+   <h3 style="margin: var(--lumo-space-m); padding: var(--lumo-space-m);">Buduj lokalną sieć wsparcia! "Myśl globalnie - działaj lokalnie". </h3>
+   <h4 style="margin: var(--lumo-space-m); padding: var(--lumo-space-m);">Chcesz pomóc? W łatwy sposób znajdź osoby potrzebujące pomocy blisko Ciebie. Potrzebujesz pomocy? Szybko poinformuj społeczność o potrzebnym wsparciu.</h4>
   </vaadin-vertical-layout>
   <vaadin-vertical-layout theme="spacing">
    <img src="images/serce.png" , alt="Image of heart" style="width:300px; height:300px;">

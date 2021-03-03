@@ -17,12 +17,6 @@ import com.helpcall.helpcallapp.views.main.MainView;
 @Tag("registration-view")
 public class RegistrationView extends PolymerTemplate<RegistrationViewModel> {
 
-    // This is the Java companion file of a design
-    // You can find the design file in
-    // /frontend/views/views/registration/registration-view.js
-    // The design can be easily edited by using Vaadin Designer
-    // (vaadin.com/designer)
-
     public static interface RegistrationViewModel extends TemplateModel {
     }
 

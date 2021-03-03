@@ -17,12 +17,6 @@ import com.helpcall.helpcallapp.views.main.MainView;
 @Tag("statistics-view")
 public class StatisticsView extends PolymerTemplate<StatisticsViewModel> {
 
-    // This is the Java companion file of a design
-    // You can find the design file in
-    // /frontend/views/views/statistics/statistics-view.js
-    // The design can be easily edited by using Vaadin Designer
-    // (vaadin.com/designer)
-
     public static interface StatisticsViewModel extends TemplateModel {
     }
 

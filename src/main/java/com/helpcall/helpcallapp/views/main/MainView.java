@@ -2,6 +2,11 @@ package com.helpcall.helpcallapp.views.main;
 
 import java.util.Optional;
 
+import com.helpcall.helpcallapp.views.mapVol.FindOnMapVolunteerSideView;
+import com.helpcall.helpcallapp.views.mapneed.FindOnMapInNeedSideView;
+import com.helpcall.helpcallapp.views.need.NewNeedView;
+import com.helpcall.helpcallapp.views.needList.MyNeedListView;
+import com.helpcall.helpcallapp.views.wallOfGlory.WallOfGloryView;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ComponentUtil;
 import com.vaadin.flow.component.applayout.AppLayout;
@@ -86,6 +91,13 @@ public class MainView extends AppLayout {
         tabs.addThemeVariants(TabsVariant.LUMO_MINIMAL);
         tabs.setId("tabs");
         tabs.add(createMenuItems());
+        tabs.getComponentAt(9).setVisible(false);
+        tabs.getComponentAt(10).setVisible(false);
+        tabs.getComponentAt(11).setVisible(false);
+        tabs.getComponentAt(12).setVisible(false);
+        tabs.getComponentAt(13).setVisible(false);
+        tabs.getComponentAt(14).setVisible(false);
+        tabs.getComponentAt(15).setVisible(false);
         return tabs;
     }
 
@@ -101,7 +113,12 @@ public class MainView extends AppLayout {
                 createTab("Zaloguj się", LoginView.class),
                 createTab("Rejestracja", RegistrationView.class),
                 createTab("Rejestracja - potrzebuję pomocy", RegistrationNeedHelpView.class),
-                createTab("Rejestracja - wolontariusz", RegistrationVolunteerView.class)
+                createTab("Rejestracja - wolontariusz", RegistrationVolunteerView.class),
+                createTab("Dodaj nową potrzebę", NewNeedView.class),
+                createTab("Moja lista potrzeb", MyNeedListView.class),
+                createTab("Moja ściana chwały", WallOfGloryView.class),
+                createTab("Znajdź na mapie", FindOnMapVolunteerSideView.class),
+                createTab("Znajdź na mapie", FindOnMapInNeedSideView.class)
                 };
     }
 
