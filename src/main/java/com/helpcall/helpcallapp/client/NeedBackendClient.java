@@ -3,6 +3,7 @@ package com.helpcall.helpcallapp.client;
 import com.helpcall.helpcallapp.config.BackEndConfig;
 import com.helpcall.helpcallapp.domain.InstitutionDto;
 import com.helpcall.helpcallapp.domain.NeedDto;
+import com.helpcall.helpcallapp.domain.VolunteerDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;

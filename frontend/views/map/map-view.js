@@ -3,7 +3,6 @@ import { html } from '@polymer/polymer/lib/utils/html-tag';
 import '@vaadin/vaadin-button/src/vaadin-button.js';
 import '@vaadin/vaadin-ordered-layout/src/vaadin-horizontal-layout.js';
 import '@vaadin/vaadin-ordered-layout/src/vaadin-vertical-layout.js';
-import '@vaadin/vaadin-split-layout/src/vaadin-split-layout.js';
 
 class MapView extends PolymerElement {
 
@@ -14,13 +13,13 @@ class MapView extends PolymerElement {
   <h1 id="h1" style="align-self: center; margin: var(--lumo-space-m); padding: var(--lumo-space-m);">Sprawdź na mapie</h1>
  </vaadin-horizontal-layout>
  <vaadin-button id="vaadinButton" style="flex-grow: 0; align-self: stretch;">
-  Szukaj wolontariuszy
+   Szukaj wolontariuszy 
  </vaadin-button>
  <vaadin-button id="vaadinButton1" style="align-self: stretch;">
-  Szukaj potrzeb do spełnienia
+   Szukaj potrzeb do spełnienia 
  </vaadin-button>
 </vaadin-vertical-layout>
-<vaadin-split-layout id="vaadinSplitLayout" style="width: 100%; height: 100%;"></vaadin-split-layout>
+<vaadin-vertical-layout theme="spacing" id="vaadinVerticalLayout1" style="width: 100%; height: 100%; margin: var(--lumo-space-m); padding: var(--lumo-space-m); justify-content: center; align-items: center; flex-direction: row;"></vaadin-vertical-layout>
 `;
   }
 

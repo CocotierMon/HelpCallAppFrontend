@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Setter
 @Getter
 @AllArgsConstructor
@@ -16,19 +18,20 @@ public class InstitutionDto {
 
     @JsonProperty("Id")
     public Long id;
-
     @JsonProperty("Name")
     public String name;
-
     @JsonProperty("Email")
     public String email;
-
-    @Override
-    public String toString() {
-        return "Institution{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }
+    @JsonProperty("Password")
+    public String password;
+    @JsonProperty("Latitude")
+    public String lat;
+    @JsonProperty("Longitude")
+    public String lon;
+    @JsonProperty("Description")
+    public String description;
+    @JsonProperty("IsInstitution")
+    public int isInstitution;
+    @JsonProperty("Needs")
+    public List<NeedDto> needs;
 }

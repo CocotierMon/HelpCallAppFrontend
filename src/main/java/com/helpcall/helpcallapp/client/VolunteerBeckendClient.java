@@ -1,6 +1,7 @@
 package com.helpcall.helpcallapp.client;
 
 import com.helpcall.helpcallapp.config.BackEndConfig;
+import com.helpcall.helpcallapp.domain.NeedDto;
 import com.helpcall.helpcallapp.domain.VolunteerDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -31,5 +32,19 @@ public class VolunteerBeckendClient {
                .encode()
                .build()
                .toUri();
+    }
+
+    public void saveNewVolunteer(VolunteerDto volunteerDto) {
+        restTemplate.postForObject(saveVolunteerByUri(), volunteerDto, VolunteerDto.class);
+    }
+
+    private URI saveVolunteerByUri() {
+        assert backEndConfig != null;
+        return UriComponentsBuilder.fromHttpUrl(backEndConfig.getBackEndUrl())
+                .port(backEndConfig.getPort())
+                .path("/volunteers")
+                .encode()
+                .build()
+                .toUri();
     }
 }

@@ -7,6 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Setter
 @Getter
 @AllArgsConstructor
@@ -16,15 +19,8 @@ public class NeedsBoardDto {
 
     @JsonProperty("Id")
     public Long id;
-
     @JsonProperty("Title")
     public String title;
-
-    @Override
-    public String toString() {
-        return "NeedsBoardDto{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                '}';
-    }
+    @JsonProperty("Needs")
+    private List<NeedDto> needs = new ArrayList<>();
 }

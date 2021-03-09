@@ -56,7 +56,7 @@
       "leaflet-canvas-marker": "0.2.1",
       "leaflet.markercluster": "1.4.1",
       "leaflet.fullscreen": "1.6.0",
-      "leaflet": "^1.6.0"
+      "leaflet": "1.6.0"
     },
     "devDependencies": {
       "webpack-babel-multi-target-plugin": "2.3.3",
@@ -69,7 +69,7 @@
       "webpack-merge": "4.2.2",
       "webpack-dev-server": "3.11.0"
     },
-    "hash": "637320fbbc90d1f24ee27f629806e292d80ae98dfae267d1fd088e44e1b1bcc8"
+    "hash": "78f003d2558f1d8e16cbc5fc50b9c0d0ed1cf34f325482c556fcefac27db36cb"
   },
   "dependencies": {
     "lit-element": "^2.2.1",
@@ -120,6 +120,11 @@
     "chance": "1.1.7",
     "@vaadin/vaadin-avatar": "1.0.0",
     "open": "^7.2.1",
+    "leaflet.heat": "0.2.0",
+    "leaflet-kmz": "1.0.4",
+    "leaflet-canvas-marker": "0.2.1",
+    "leaflet.markercluster": "1.4.1",
+    "leaflet.fullscreen": "1.6.0",
     "leaflet": "1.6.0"
   },
   "devDependencies": {

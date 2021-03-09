@@ -7,6 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+import java.util.List;
+
 @Setter
 @Getter
 @AllArgsConstructor
@@ -16,19 +19,20 @@ public class NeedDto {
 
     @JsonProperty("Id")
     public Long id;
-
     @JsonProperty("Title")
     public String title;
-
+    @JsonProperty("EndTime")
+    private LocalDate endTime;
+    @JsonProperty("Volunteers")
+    private List<VolunteerDto> volunteers;
+    @JsonProperty("Done")
+    public boolean done;
     @JsonProperty("Description")
     public String description;
-
-    @Override
-    public String toString() {
-        return "Need{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                '}';
-    }
+    @JsonProperty("Location")
+    private String location;
+    @JsonProperty("Institution")
+    private InstitutionDto institution;
+    @JsonProperty("NeedsBoards")
+    private List<NeedsBoardDto> needsBoards;
 }
