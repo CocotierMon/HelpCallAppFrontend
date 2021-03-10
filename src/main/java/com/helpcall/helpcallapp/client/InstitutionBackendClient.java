@@ -27,7 +27,63 @@ public class InstitutionBackendClient {
     }
 
     private URI getInstitutionsByUri() {
-        assert backEndConfig != null;
+        return UriComponentsBuilder.fromHttpUrl(backEndConfig.getBackEndUrl())
+                .port(backEndConfig.getPort())
+                .path("/institutions")
+                .encode()
+                .build()
+                .toUri();
+    }
+
+    public InstitutionDto getInstitutionById(Long id) {
+        Optional<InstitutionDto> institution = Optional.ofNullable(
+                restTemplate.getForObject(getInstitutionsByIdUri(id), InstitutionDto.class)
+        );
+        return institution.orElseGet(InstitutionDto::new);
+    }
+
+    private URI getInstitutionsByIdUri(Long id) {
+        return UriComponentsBuilder.fromHttpUrl(backEndConfig.getBackEndUrl())
+                .port(backEndConfig.getPort())
+                .path("/institutions")
+                .queryParam("id", id)
+                .encode()
+                .build()
+                .toUri();
+    }
+
+    public void deleteInstitutionById(Long id) {
+        restTemplate.delete(deleteInstitutionByIdUri(id));
+    }
+
+    private URI deleteInstitutionByIdUri(Long id) {
+        return UriComponentsBuilder.fromHttpUrl(backEndConfig.getBackEndUrl())
+                .port(backEndConfig.getPort())
+                .path("/institutions")
+                .queryParam("id", id)
+                .encode()
+                .build()
+                .toUri();
+    }
+
+    public void createInstitution(InstitutionDto institutionDto) {
+        restTemplate.postForObject(saveInstitutionByUri(), institutionDto, InstitutionDto.class);
+    }
+
+    private URI saveInstitutionByUri() {
+        return UriComponentsBuilder.fromHttpUrl(backEndConfig.getBackEndUrl())
+                .port(backEndConfig.getPort())
+                .path("/institutions")
+                .encode()
+                .build()
+                .toUri();
+    }
+
+    public void updateInstitution(InstitutionDto institutionDto) {
+        restTemplate.put(updateInstitutionByUri(), institutionDto);
+    }
+
+    private URI updateInstitutionByUri() {
         return UriComponentsBuilder.fromHttpUrl(backEndConfig.getBackEndUrl())
                 .port(backEndConfig.getPort())
                 .path("/institutions")

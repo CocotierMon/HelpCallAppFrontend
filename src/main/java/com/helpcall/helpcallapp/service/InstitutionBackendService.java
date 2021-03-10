@@ -16,4 +16,20 @@ public class InstitutionBackendService {
     public List<InstitutionDto> getInstitutions() {
         return institutionBackendClient.getAllInstitutions();
     }
+
+    public InstitutionDto getInstitutionById(Long id) {
+        return institutionBackendClient.getInstitutionById(id);
+    }
+
+    public void deleteInstitution(Long id) {
+        institutionBackendClient.deleteInstitutionById(id);
+    }
+
+    public void createInstitution(InstitutionDto institutionDto) {
+        institutionBackendClient.createInstitution(institutionDto);
+    }
+
+    public void updateInstitution(InstitutionDto institutionDto) {
+        institutionBackendClient.updateInstitution(institutionDto);
+    }
 }

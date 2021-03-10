@@ -1,6 +1,7 @@
 package com.helpcall.helpcallapp.views.registrationneedhelp;
 
 import com.helpcall.helpcallapp.domain.InstitutionDto;
+import com.helpcall.helpcallapp.service.InstitutionBackendService;
 import com.vaadin.addon.leaflet4vaadin.LeafletMap;
 import com.vaadin.addon.leaflet4vaadin.layer.map.options.DefaultMapOptions;
 import com.vaadin.addon.leaflet4vaadin.layer.map.options.MapOptions;
@@ -17,6 +18,7 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.polymertemplate.Id;
 import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
 import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
+import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
@@ -33,26 +35,27 @@ public class RegistrationNeedHelpView extends PolymerTemplate<RegistrationNeedHe
 
     @Id("vaadinHorizontalLayout1")
     private HorizontalLayout vaadinHorizontalLayout1;
-    private final InstitutionDto institutionDto = new InstitutionDto();
     @Id("vaadinHorizontalLayout")
     private HorizontalLayout vaadinHorizontalLayout;
+    @Id("choose")
+    private HorizontalLayout horizontalLayout;
     @Id("wpiszSwójNick")
-    private TextField wpiszSwójNick;
+    private TextField nick;
     @Id("wpiszAdresEMailDoKontaktu")
-    private TextField wpiszAdresEMailDoKontaktu;
+    private TextField email;
     @Id("wprowadźHasło")
-    private TextField wprowadźHasło;
+    private TextField password;
     @Id("powtórzHasło")
-    private TextField powtórzHasło;
-    @Id("wybierzOdpowiedź")
-    private RadioButtonGroup<String> wybierzOdpowiedź;
+    private TextField confirmPassword;
     @Id("vaadinButton")
     private Button vaadinButton;
+    @Id("opiszSięWKilkuSłowach")
+    private TextArea description;
 
     public static interface RegistrationNeedHelpViewModel extends TemplateModel {
     }
 
-    public RegistrationNeedHelpView() {
+    public RegistrationNeedHelpView(InstitutionBackendService service) {
 
         MapOptions options = new DefaultMapOptions();
         options.setCenter(new LatLng(51.74913908790854, 19.456787109375));
@@ -83,9 +86,11 @@ public class RegistrationNeedHelpView extends PolymerTemplate<RegistrationNeedHe
             longitude.setValue(newPosition.getLng().toString());
         });
 
+        InstitutionDto institution = new InstitutionDto();
+
         marker.onDragEnd(dragEndEvent -> {
-            institutionDto.setLat(latitude.getValue());
-            institutionDto.setLon(longitude.getValue());
+            institution.setLat(latitude.getValue());
+            institution.setLon(longitude.getValue());
         });
 
         form.addFormItem(latitude, "Szerokość:");
@@ -93,9 +98,35 @@ public class RegistrationNeedHelpView extends PolymerTemplate<RegistrationNeedHe
 
         marker.addTo(leafletMap);
 
+        RadioButtonGroup<String> choosAnswer = new RadioButtonGroup<>();
+        choosAnswer.setId("choose");
+        choosAnswer.setLabel("Wybierz odpowiedź:");
+        choosAnswer.setRequired(true);
+        choosAnswer.setItems("Rejestruję się jako osoba prywatna", "Rejestruję się jako osoba reprezentująca instytucję");
+
         vaadinHorizontalLayout.add(leafletMap);
 
         vaadinHorizontalLayout1.add(form);
+
+        vaadinHorizontalLayout.add(choosAnswer);
+
+        vaadinButton.addClickListener(buttonClickEvent -> {
+            institution.setName(nick.getValue());
+            institution.setEmail(email.getValue());
+            if(password.getValue().equals(confirmPassword.getValue())) {
+                institution.setPassword(password.getValue());
+            } else {
+                password.setHelperText("Wpisz poprawne hasło.");
+            }
+            institution.setDescription(description.getValue());
+            if(choosAnswer.getValue().equals("Rejestruję się jako osoba prywatna")) {
+                institution.setIsInstitution("private");
+            } else {
+                institution.setIsInstitution("institution");
+            }
+
+            service.createInstitution(institution);
+        });
     }
 
 }

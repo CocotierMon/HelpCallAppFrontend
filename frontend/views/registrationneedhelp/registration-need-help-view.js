@@ -33,26 +33,12 @@ class RegistrationNeedHelpView extends PolymerElement {
 <vaadin-horizontal-layout theme="spacing" id="vaadinHorizontalLayout" style="width: 100%; height: 100%; padding: var(--lumo-space-m); margin: var(--lumo-space-m); align-items: center; justify-content: center;"></vaadin-horizontal-layout>
 <vaadin-horizontal-layout theme="spacing" style="width: 100%; height: 100%; margin: var(--lumo-space-m); flex-direction: row; align-items: center; justify-content: center; align-content: flex-end; padding: var(--lumo-space-m); margin-top: var(--lumo-space-xs); padding-top: var(--lumo-space-xs); margin-bottom: var(--lumo-space-xs); padding-bottom: var(--lumo-space-xs); flex-wrap: wrap;">
  <vaadin-text-area label="Opisz się w kilku słowach" placeholder="Przykładowy opis:
-Jesteśmy zawodową rodziną zastępczą. Działamy od 2010 roku, a w naszym domu gościliśmy do tej pory trzydzieścioro dzieci. Obecnie przebywa u nas czworo podopiecznych, dwoje z niepełnosprawnością. Dziękujemy za Waszą pomoc!" style="width: 100%; height: 100%; margin: var(--lumo-space-m); align-self: center;" minlength="300" maxlength="30" required></vaadin-text-area>
+Jesteśmy zawodową rodziną zastępczą. Działamy od 2010 roku, a w naszym domu gościliśmy do tej pory trzydzieścioro dzieci. Obecnie przebywa u nas czworo podopiecznych, dwoje z niepełnosprawnością. Dziękujemy za Waszą pomoc!" style="width: 100%; height: 100%; margin: var(--lumo-space-m); align-self: center;" minlength="30" maxlength="300" required id="opiszSięWKilkuSłowach" invalid></vaadin-text-area>
 </vaadin-horizontal-layout>
-<vaadin-horizontal-layout theme="spacing" style="margin: var(--lumo-space-m); padding: var(--lumo-space-m); flex-direction: row; align-items: center; justify-content: center; margin-top: var(--lumo-space-xs); padding-top: var(--lumo-space-xs); align-content: space-around;">
- <vaadin-radio-group theme="horizontal" style="align-self: center;" label="Wybierz odpowiedź:" required id="wybierzOdpowiedź" value="on">
-  <vaadin-radio-button style="align-self: center; flex-grow: 1; margin-right: var(--lumo-space-l);" id="vaadinRadioButton" checked>
-   <b>Rejestruję się jako osoba prywatna</b>
-   <div>
-     Działam we własnym imieniu 
-   </div>
-  </vaadin-radio-button>
-  <vaadin-radio-button style="align-self: center; flex-grow: 1; margin-left: var(--lumo-space-l);" tabindex="-1" id="vaadinRadioButton1">
-   <b>Rejestruję się w imieniu instytucji</b>
-   <div>
-     Reprezentuję instytucję non-profit 
-   </div>
-  </vaadin-radio-button>
- </vaadin-radio-group>
+<vaadin-horizontal-layout theme="spacing" style="margin: var(--lumo-space-m); padding: var(--lumo-space-m); flex-direction: row; align-items: center; justify-content: center; margin-top: var(--lumo-space-xs); padding-top: var(--lumo-space-xs); align-content: space-around;" id="choose">
 </vaadin-horizontal-layout>
 <vaadin-horizontal-layout theme="spacing" style="margin: var(--lumo-space-m); padding: var(--lumo-space-m); align-items: flex-start; justify-content: center; flex-wrap: wrap; align-content: center; margin-top: var(--lumo-space-xs); padding-top: var(--lumo-space-xs);">
- <vaadin-button theme="primary success" style="margin: var(--lumo-space-m); width: 100%; height: 100%; flex-grow: 1; align-self: center;" disabled id="vaadinButton" tabindex="">
+ <vaadin-button theme="primary success" style="margin: var(--lumo-space-m); width: 100%; height: 100%; flex-grow: 1; align-self: center;" id="vaadinButton" tabindex="">
    Zakładam konto jako osoba potrzebująca pomocy 
  </vaadin-button>
 </vaadin-horizontal-layout>

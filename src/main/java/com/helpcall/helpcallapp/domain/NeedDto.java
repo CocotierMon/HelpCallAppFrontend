@@ -29,8 +29,10 @@ public class NeedDto {
     public boolean done;
     @JsonProperty("Description")
     public String description;
-    @JsonProperty("Location")
-    private String location;
+    @JsonProperty("Latitude")
+    public String lat;
+    @JsonProperty("Longitude")
+    public String lon;
     @JsonProperty("Institution")
     private InstitutionDto institution;
     @JsonProperty("NeedsBoards")
