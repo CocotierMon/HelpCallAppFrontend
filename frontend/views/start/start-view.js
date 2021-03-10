@@ -28,7 +28,7 @@ class StartView extends PolymerElement {
   </vaadin-vertical-layout>
  </vaadin-horizontal-layout>
  <vaadin-horizontal-layout class="footer" style="width: 100%; flex-basis: var(--lumo-size-l); flex-shrink: 0; background-color: var(--lumo-contrast-10pct); margin: var(--lumo-space-m); padding: var(--lumo-space-m); flex-direction: row; align-items: center; justify-content: space-around; height: 100%;">
-  <vaadin-button theme="primary" style="width: 100%;">
+  <vaadin-button onclick="location.href='http://localhost:8081/registrationVolunteer';" theme="primary" style="width: 100%;">
     Zostań wolontariuszem! 
   </vaadin-button>
  </vaadin-horizontal-layout>

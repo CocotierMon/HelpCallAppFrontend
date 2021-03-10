@@ -14,6 +14,7 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.formlayout.FormLayout;
+import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.polymertemplate.Id;
 import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
@@ -38,7 +39,7 @@ public class RegistrationNeedHelpView extends PolymerTemplate<RegistrationNeedHe
     @Id("vaadinHorizontalLayout")
     private HorizontalLayout vaadinHorizontalLayout;
     @Id("choose")
-    private HorizontalLayout horizontalLayout;
+    private Div div;
     @Id("wpiszSwójNick")
     private TextField nick;
     @Id("wpiszAdresEMailDoKontaktu")
@@ -104,11 +105,10 @@ public class RegistrationNeedHelpView extends PolymerTemplate<RegistrationNeedHe
         choosAnswer.setRequired(true);
         choosAnswer.setItems("Rejestruję się jako osoba prywatna", "Rejestruję się jako osoba reprezentująca instytucję");
 
+        div.add(choosAnswer);
         vaadinHorizontalLayout.add(leafletMap);
 
         vaadinHorizontalLayout1.add(form);
-
-        vaadinHorizontalLayout.add(choosAnswer);
 
         vaadinButton.addClickListener(buttonClickEvent -> {
             institution.setName(nick.getValue());

@@ -24,7 +24,8 @@ class RegistrationNeedHelpView extends PolymerElement {
    <vaadin-text-field placeholder="Powtórz hasło" minlength="5" required maxlength="25" style="align-self: center; width: 100%;" label="Powtórz hasło" id="powtórzHasło"></vaadin-text-field>
   </vaadin-horizontal-layout>
   <vaadin-horizontal-layout theme="spacing" style="margin: var(--lumo-space-m); padding: var(--lumo-space-m); align-self: center; align-items: center; justify-content: space-around; flex-direction: column; height: 100%;" id="vaadinHorizontalLayout1">
-   <div style="margin: var(--lumo-space-m); padding: var(--lumo-space-m); align-self: center;">
+   <div style="margin: var(--lumo-space-m); padding: var(--lumo-space-m); align-self: center; margin-bottom: var(--lumo-space-xs); padding-bottom: var(--lumo-space-xs); width: 100%; height: 100%;" id="choose"></div>
+   <div style="margin: var(--lumo-space-m); padding: var(--lumo-space-m); align-self: center; margin-bottom: var(--lumo-space-xs); padding-bottom: var(--lumo-space-xs); width: 100%; height: 100%;">
      Oznacz swoje położenie na mapie. Złap pinezkę i opuść w wybrane miejsce na mapie. Nie musisz oznaczać swojego miejsca zamieszkania. Możesz zaznaczyć przybliżone miejsce, w którym Twoje potrzeby miałyby być zrealizowane. 
    </div>
   </vaadin-horizontal-layout>
@@ -34,8 +35,6 @@ class RegistrationNeedHelpView extends PolymerElement {
 <vaadin-horizontal-layout theme="spacing" style="width: 100%; height: 100%; margin: var(--lumo-space-m); flex-direction: row; align-items: center; justify-content: center; align-content: flex-end; padding: var(--lumo-space-m); margin-top: var(--lumo-space-xs); padding-top: var(--lumo-space-xs); margin-bottom: var(--lumo-space-xs); padding-bottom: var(--lumo-space-xs); flex-wrap: wrap;">
  <vaadin-text-area label="Opisz się w kilku słowach" placeholder="Przykładowy opis:
 Jesteśmy zawodową rodziną zastępczą. Działamy od 2010 roku, a w naszym domu gościliśmy do tej pory trzydzieścioro dzieci. Obecnie przebywa u nas czworo podopiecznych, dwoje z niepełnosprawnością. Dziękujemy za Waszą pomoc!" style="width: 100%; height: 100%; margin: var(--lumo-space-m); align-self: center;" minlength="30" maxlength="300" required id="opiszSięWKilkuSłowach" invalid></vaadin-text-area>
-</vaadin-horizontal-layout>
-<vaadin-horizontal-layout theme="spacing" style="margin: var(--lumo-space-m); padding: var(--lumo-space-m); flex-direction: row; align-items: center; justify-content: center; margin-top: var(--lumo-space-xs); padding-top: var(--lumo-space-xs); align-content: space-around;" id="choose">
 </vaadin-horizontal-layout>
 <vaadin-horizontal-layout theme="spacing" style="margin: var(--lumo-space-m); padding: var(--lumo-space-m); align-items: flex-start; justify-content: center; flex-wrap: wrap; align-content: center; margin-top: var(--lumo-space-xs); padding-top: var(--lumo-space-xs);">
  <vaadin-button theme="primary success" style="margin: var(--lumo-space-m); width: 100%; height: 100%; flex-grow: 1; align-self: center;" id="vaadinButton" tabindex="">
