@@ -1,7 +1,6 @@
 package com.helpcall.helpcallapp.client;
 
 import com.helpcall.helpcallapp.config.BackEndConfig;
-import com.helpcall.helpcallapp.domain.NeedDto;
 import com.helpcall.helpcallapp.domain.VolunteerDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -13,7 +12,7 @@ import java.util.*;
 
 @Component
 @RequiredArgsConstructor
-public class VolunteerBeckendClient {
+public class VolunteerBackendClient {
 
     private final RestTemplate restTemplate;
     private final BackEndConfig backEndConfig;
@@ -25,7 +24,6 @@ public class VolunteerBeckendClient {
     }
 
     private URI getVolunteersByUri() {
-        assert backEndConfig != null;
         return UriComponentsBuilder.fromHttpUrl(backEndConfig.getBackEndUrl())
                .port(backEndConfig.getPort())
                .path("/volunteers")
@@ -34,17 +32,41 @@ public class VolunteerBeckendClient {
                .toUri();
     }
 
-    public void saveNewVolunteer(VolunteerDto volunteerDto) {
+    public VolunteerDto getVolunteerById(Long id) {
+        Optional<VolunteerDto> volunteer = Optional.ofNullable(
+                restTemplate.getForObject(getVolunteerByIdUri(id), VolunteerDto.class)
+        );
+        return volunteer.orElseGet(VolunteerDto::new);
+    }
+
+    private URI getVolunteerByIdUri(Long id) {
+        return UriComponentsBuilder.fromHttpUrl(backEndConfig.getBackEndUrl())
+                .port(backEndConfig.getPort())
+                .path("/volunteers")
+                .queryParam("id", id)
+                .encode()
+                .build()
+                .toUri();
+    }
+
+    public void createVolunteer(VolunteerDto volunteerDto) {
         restTemplate.postForObject(saveVolunteerByUri(), volunteerDto, VolunteerDto.class);
     }
 
     private URI saveVolunteerByUri() {
-        assert backEndConfig != null;
         return UriComponentsBuilder.fromHttpUrl(backEndConfig.getBackEndUrl())
                 .port(backEndConfig.getPort())
                 .path("/volunteers")
                 .encode()
                 .build()
                 .toUri();
+    }
+
+    public void deleteVolunteerById(Long id) {
+        restTemplate.delete(getVolunteerByIdUri(id));
+    }
+
+    public void updateVolunteer(VolunteerDto volunteerDto) {
+        restTemplate.put(saveVolunteerByUri(), volunteerDto);
     }
 }

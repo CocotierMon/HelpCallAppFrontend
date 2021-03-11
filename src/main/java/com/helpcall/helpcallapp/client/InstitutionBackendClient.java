@@ -53,17 +53,7 @@ public class InstitutionBackendClient {
     }
 
     public void deleteInstitutionById(Long id) {
-        restTemplate.delete(deleteInstitutionByIdUri(id));
-    }
-
-    private URI deleteInstitutionByIdUri(Long id) {
-        return UriComponentsBuilder.fromHttpUrl(backEndConfig.getBackEndUrl())
-                .port(backEndConfig.getPort())
-                .path("/institutions")
-                .queryParam("id", id)
-                .encode()
-                .build()
-                .toUri();
+        restTemplate.delete(getInstitutionsByIdUri(id));
     }
 
     public void createInstitution(InstitutionDto institutionDto) {
@@ -80,15 +70,6 @@ public class InstitutionBackendClient {
     }
 
     public void updateInstitution(InstitutionDto institutionDto) {
-        restTemplate.put(updateInstitutionByUri(), institutionDto);
-    }
-
-    private URI updateInstitutionByUri() {
-        return UriComponentsBuilder.fromHttpUrl(backEndConfig.getBackEndUrl())
-                .port(backEndConfig.getPort())
-                .path("/institutions")
-                .encode()
-                .build()
-                .toUri();
+        restTemplate.put(saveInstitutionByUri(), institutionDto);
     }
 }

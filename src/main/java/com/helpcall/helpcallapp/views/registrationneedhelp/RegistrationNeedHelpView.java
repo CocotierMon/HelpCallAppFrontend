@@ -21,6 +21,7 @@ import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
 import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.templatemodel.TemplateModel;
@@ -110,14 +111,18 @@ public class RegistrationNeedHelpView extends PolymerTemplate<RegistrationNeedHe
 
         vaadinHorizontalLayout1.add(form);
 
+        confirmPassword.setValueChangeMode(ValueChangeMode.ON_BLUR);
+        confirmPassword.addValueChangeListener((event) -> {
+            if (!password.getValue().equals(confirmPassword.getValue())) {
+                confirmPassword.clear();
+                confirmPassword.setHelperText("Wprowadź poprawne hasło");
+            }
+        });
+
         vaadinButton.addClickListener(buttonClickEvent -> {
             institution.setName(nick.getValue());
             institution.setEmail(email.getValue());
-            if(password.getValue().equals(confirmPassword.getValue())) {
-                institution.setPassword(password.getValue());
-            } else {
-                password.setHelperText("Wpisz poprawne hasło.");
-            }
+            institution.setPassword(password.getValue());
             institution.setDescription(description.getValue());
             if(choosAnswer.getValue().equals("Rejestruję się jako osoba prywatna")) {
                 institution.setIsInstitution("private");

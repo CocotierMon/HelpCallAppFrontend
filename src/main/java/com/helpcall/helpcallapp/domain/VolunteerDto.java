@@ -32,4 +32,17 @@ public class VolunteerDto {
     public String description;
     @JsonProperty("Needs")
     public List<NeedDto> needs;
+
+    @Override
+    public String toString() {
+        return "VolunteerDto{" +
+                " name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", lat='" + lat + '\'' +
+                ", lon='" + lon + '\'' +
+                ", description='" + description + '\'' +
+                ", needs=" + needs +
+                '}';
+    }
 }

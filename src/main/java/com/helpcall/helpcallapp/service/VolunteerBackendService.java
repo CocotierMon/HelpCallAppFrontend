@@ -1,6 +1,6 @@
 package com.helpcall.helpcallapp.service;
 
-import com.helpcall.helpcallapp.client.VolunteerBeckendClient;
+import com.helpcall.helpcallapp.client.VolunteerBackendClient;
 import com.helpcall.helpcallapp.domain.VolunteerDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -11,9 +11,19 @@ import java.util.List;
 @RequiredArgsConstructor
 public class VolunteerBackendService {
 
-    private final VolunteerBeckendClient volunteerBeckendClient;
+    private final VolunteerBackendClient volunteerBackendClient;
 
     public List<VolunteerDto> getVolunteers() {
-        return volunteerBeckendClient.getAllVolunteers();
+        return volunteerBackendClient.getAllVolunteers();
+    }
+
+    public VolunteerDto getVolunteerById(Long id) {return volunteerBackendClient.getVolunteerById(id);}
+
+    public void createVolunteer(VolunteerDto volunteerDto) { volunteerBackendClient.createVolunteer(volunteerDto);}
+
+    public void deleteVolunteer(Long id) { volunteerBackendClient.deleteVolunteerById(id);}
+
+    public void updateVolunteer(VolunteerDto volunteerDto) {
+        volunteerBackendClient.updateVolunteer(volunteerDto);
     }
 }
