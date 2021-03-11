@@ -13,7 +13,9 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.formlayout.FormLayout;
+import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.polymertemplate.Id;
 import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
 import com.vaadin.flow.component.textfield.TextArea;
@@ -48,6 +50,8 @@ public class RegistrationVolunteerView extends PolymerTemplate<RegistrationVolun
     private TextArea description;
     @Id("vaadinButton")
     private Button vaadinButton;
+    @Id("vaadinVerticalLayout")
+    private VerticalLayout vaadinVerticalLayout;
 
     public static interface RegistrationVolunteerViewModel extends TemplateModel {
     }
@@ -116,8 +120,12 @@ public class RegistrationVolunteerView extends PolymerTemplate<RegistrationVolun
             volunteer.setLon(longitude.getValue());
 
             service.createVolunteer(volunteer);
+
+            Notification notification = new Notification(
+                        "Twoje konto zostało utworzone, możesz się zalogować.", 3000,
+                        Notification.Position.TOP_START);
+            notification.setOpened(true);
         });
     }
-
 
 }

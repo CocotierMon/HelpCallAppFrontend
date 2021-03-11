@@ -1,18 +1,18 @@
 import { PolymerElement } from '@polymer/polymer/polymer-element';
 import { html } from '@polymer/polymer/lib/utils/html-tag';
-import '@vaadin/vaadin-ordered-layout/src/vaadin-vertical-layout.js';
 import '@vaadin/vaadin-text-field/src/vaadin-text-field.js';
 import '@vaadin/vaadin-text-field/src/vaadin-text-area.js';
 import '@vaadin/vaadin-radio-button/src/vaadin-radio-group.js';
 import '@vaadin/vaadin-radio-button/src/vaadin-radio-button.js';
 import '@vaadin/vaadin-button/src/vaadin-button.js';
 import '@vaadin/vaadin-ordered-layout/src/vaadin-horizontal-layout.js';
+import '@vaadin/vaadin-ordered-layout/src/vaadin-vertical-layout.js';
 
 class RegistrationVolunteerView extends PolymerElement {
 
   static get template() {
     return html`
-<vaadin-vertical-layout style="width: 100%; height: 100%;">
+<vaadin-vertical-layout style="width: 100%; height: 100%; flex-direction: column; justify-content: flex-end; flex-wrap: wrap; align-content: space-around; align-items: stretch;" id="vaadinVerticalLayout">
  <vaadin-horizontal-layout class="header" style="width: 100%; flex-basis: var(--lumo-size-l); flex-shrink: 0; background-color: var(--lumo-contrast-10pct); align-self: center; justify-content: center;">
   <h1>Rejestracja wolontariusza</h1>
  </vaadin-horizontal-layout>
@@ -30,7 +30,7 @@ class RegistrationVolunteerView extends PolymerElement {
   </vaadin-horizontal-layout>
  </vaadin-vertical-layout>
 </vaadin-vertical-layout>
-<vaadin-horizontal-layout theme="spacing" id="vaadinHorizontalLayout" style="width: 100%; height: 100%; margin: var(--lumo-space-m); padding: var(--lumo-space-m); justify-content: center; align-items: center;"></vaadin-horizontal-layout>
+<vaadin-horizontal-layout theme="spacing" id="vaadinHorizontalLayout" style="width: 100%; height: 100%; margin: var(--lumo-space-m); padding: var(--lumo-space-m); justify-content: center; align-items: center; flex-direction: column; flex-wrap: wrap; align-content: stretch;"></vaadin-horizontal-layout>
 <vaadin-horizontal-layout theme="spacing" style="width: 100%; height: 100%; margin: var(--lumo-space-m); flex-direction: row; align-items: center; justify-content: center; align-content: flex-end; padding: var(--lumo-space-m); margin-top: var(--lumo-space-xs); padding-top: var(--lumo-space-xs); margin-bottom: var(--lumo-space-xs); padding-bottom: var(--lumo-space-xs);">
  <vaadin-text-area label="Opisz się w kilku słowach" placeholder="Przykładowy opis:
 Jestem wolontariuszem, który specjalizuje się w pomocy wytchnieniowej dla rodzin osób niepełnosprawnych. Mogę zająć się Twoją bliską osobą, kiedy Ty musisz zrobić zakupy. Umiem i lubię też grać na gitarze, więc z chęcią nauczę kogoś podstaw gry. Jeśli potrzebujesz czasem z kimś wyjść na spacer - również chętnie Ci potowarzyszę." style="width: 100%; height: 100%; margin: var(--lumo-space-m); align-self: center;" minlength="15" maxlength="300" required id="opiszSięWKilkuSłowach"></vaadin-text-area>

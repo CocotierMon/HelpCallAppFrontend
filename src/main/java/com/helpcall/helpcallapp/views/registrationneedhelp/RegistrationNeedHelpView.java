@@ -15,6 +15,7 @@ import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.polymertemplate.Id;
 import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
@@ -131,6 +132,11 @@ public class RegistrationNeedHelpView extends PolymerTemplate<RegistrationNeedHe
             }
 
             service.createInstitution(institution);
+
+            Notification notification = new Notification(
+                    "Twoje konto zostało utworzone, możesz się zalogować.", 3000,
+                    Notification.Position.TOP_START);
+            notification.setOpened(true);
         });
     }
 
