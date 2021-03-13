@@ -22,5 +22,5 @@ public class NeedsBoardDto {
     @JsonProperty("Title")
     public String title;
     @JsonProperty("Needs")
-    private List<NeedDto> needs = new ArrayList<>();
+    private List<NeedDto> needs;
 }

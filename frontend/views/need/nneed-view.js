@@ -20,18 +20,18 @@ class NewNeedView extends PolymerElement {
  </vaadin-horizontal-layout>
  <vaadin-horizontal-layout theme="spacing" style="align-self: center; justify-content: center; align-items: center; margin: var(--lumo-space-m); flex-shrink: 0; padding: var(--lumo-space-m); width: 100%; height: 100%;">
   <vaadin-vertical-layout class="content" style="width: 100%; flex-grow: 1; flex-shrink: 1; flex-basis: auto; flex-direction: column; justify-content: center; align-items: center; align-self: center; margin: var(--lumo-space-m); padding: var(--lumo-space-m);" theme="spacing">
-   <vaadin-text-field label="Tytuł" placeholder="Tutaj wpisz tytuł" style="align-self: center; flex-grow: 0; width: 100%; margin: var(--lumo-space-m); padding: var(--lumo-space-m);" minlength="5" required invalid></vaadin-text-field>
+   <vaadin-text-field label="Tytuł" placeholder="Tutaj wpisz tytuł" style="align-self: center; flex-grow: 0; width: 100%; margin: var(--lumo-space-m); padding: var(--lumo-space-m);" minlength="5" required invalid id="tytuł"></vaadin-text-field>
    <vaadin-text-area label="Opisz swoją potrzebę" placeholder="Przykładowy opis:
-Stary odkurzacz odmówił nam posłuszeństwa, a nie stać nas w tym momencie na nowy. Jeśli mają Państwo zbędny, z chęcią przyjmiemy go do siebie. Nie musi być nowy, ale też dobrze by było, żeby trochę jeszcze u nas podziałał. Prowadzimy ośmioosobowy dom, dlatego taki sprzęt jest nam niezbędny do codziennych porządków." style="width: 100%; margin: var(--lumo-space-m); padding: var(--lumo-space-m); align-self: center; height: 100%; flex-grow: 1;" minlength="50" required></vaadin-text-area>
+Stary odkurzacz odmówił nam posłuszeństwa, a nie stać nas w tym momencie na nowy. Jeśli mają Państwo zbędny, z chęcią przyjmiemy go do siebie. Nie musi być nowy, ale też dobrze by było, żeby trochę jeszcze u nas podziałał. Prowadzimy ośmioosobowy dom, dlatego taki sprzęt jest nam niezbędny do codziennych porządków." style="width: 100%; margin: var(--lumo-space-m); padding: var(--lumo-space-m); align-self: center; height: 100%; flex-grow: 1;" minlength="50" required id="opiszSwojąPotrzebę"></vaadin-text-area>
    <h5 style="align-self: stretch;">Do kiedy Twoja potrzeba powinna zostać zrealizowana?</h5>
-   <vaadin-date-picker label="Wybierz datę" placeholder="Pick a date" style="align-self: center; width: 50%;" required show-week-numbers></vaadin-date-picker>
+   <vaadin-date-picker label="Wybierz datę" placeholder="Pick a date" style="align-self: center; width: 50%;" required show-week-numbers id="wybierzDatę"></vaadin-date-picker>
   </vaadin-vertical-layout>
   <vaadin-vertical-layout theme="spacing" id="vaadinVerticalLayout" style="flex-direction: column; width: 100%; align-items: center; justify-content: center; margin: var(--lumo-space-m); padding: var(--lumo-space-m); height: 100%; align-self: center;">
    <h5 style="margin: var(--lumo-space-m); padding: var(--lumo-space-m); align-self: stretch; width: 100%; height: 100%;">Oznacz orientacyjne miejsce realizacji potrzeby. Jeśli nie określisz go teraz, wtedy zostanie ustawione na takie, które podano podczas rejestracji.</h5>
    <vaadin-horizontal-layout theme="spacing-s" id="vaadinHorizontalLayout" style="width: 100%; height: 100%; margin: var(--lumo-space-s); padding: var(--lumo-space-s); align-self: center; align-items: center; justify-content: center; flex-direction: column;"></vaadin-horizontal-layout>
   </vaadin-vertical-layout>
  </vaadin-horizontal-layout>
- <vaadin-button theme="primary success" style="flex-grow: 0; flex-shrink: 0; align-self: center; width: 70%;">
+ <vaadin-button theme="primary success" style="flex-grow: 0; flex-shrink: 0; align-self: center; width: 70%;" id="vaadinButton">
    Dodaj swoje nowe marzenie do listy! 
  </vaadin-button>
  <vaadin-horizontal-layout class="footer" style="width: 100%; flex-basis: var(--lumo-size-l); flex-shrink: 0; background-color: var(--lumo-contrast-10pct); justify-content: center;">

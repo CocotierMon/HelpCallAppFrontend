@@ -35,11 +35,10 @@ public class InstitutionBackendClient {
                 .toUri();
     }
 
-    public InstitutionDto getInstitutionById(Long id) {
-        Optional<InstitutionDto> institution = Optional.ofNullable(
-                restTemplate.getForObject(getInstitutionsByIdUri(id), InstitutionDto.class)
-        );
-        return institution.orElseGet(InstitutionDto::new);
+    public List<InstitutionDto> getInstitutionById(Long id) {
+        Optional<InstitutionDto[]> institutionDtos = Optional.ofNullable(
+                restTemplate.getForObject(getInstitutionsByIdUri(id), InstitutionDto[].class));
+        return institutionDtos.map(Arrays::asList).orElseGet(ArrayList::new);
     }
 
     private URI getInstitutionsByIdUri(Long id) {

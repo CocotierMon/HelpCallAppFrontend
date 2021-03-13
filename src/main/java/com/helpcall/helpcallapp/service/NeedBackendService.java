@@ -16,4 +16,12 @@ public class NeedBackendService {
     public List<NeedDto> getNeeds() {
         return needBackendClient.getAllNeeds();
     }
+
+    public NeedDto getNeedById(Long id) { return needBackendClient.getNeedById(id);}
+
+    public void createNeed(NeedDto needDto) { needBackendClient.saveNeed(needDto);}
+
+    public void updateNeed(NeedDto needDto) { needBackendClient.updateNeed(needDto);}
+
+    public void deleteNeed(Long id) { needBackendClient.deleteNeed(id);}
 }

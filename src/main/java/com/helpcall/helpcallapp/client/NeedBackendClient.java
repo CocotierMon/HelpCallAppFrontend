@@ -1,9 +1,7 @@
 package com.helpcall.helpcallapp.client;
 
 import com.helpcall.helpcallapp.config.BackEndConfig;
-import com.helpcall.helpcallapp.domain.InstitutionDto;
 import com.helpcall.helpcallapp.domain.NeedDto;
-import com.helpcall.helpcallapp.domain.VolunteerDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -29,12 +27,49 @@ public class NeedBackendClient {
     }
 
     private URI getNeedsByUri() {
-        assert backEndConfig != null;
         return UriComponentsBuilder.fromHttpUrl(backEndConfig.getBackEndUrl())
                 .port(backEndConfig.getPort())
                 .path("/needs")
                 .encode()
                 .build()
                 .toUri();
+    }
+
+    public NeedDto getNeedById(Long id) {
+        Optional<NeedDto> need = Optional.ofNullable(
+                restTemplate.getForObject(getNeedsByIdUri(id), NeedDto.class)
+        );
+        return need.orElseGet(NeedDto::new);
+    }
+
+    private URI getNeedsByIdUri(Long id) {
+        return UriComponentsBuilder.fromHttpUrl(backEndConfig.getBackEndUrl())
+                .port(backEndConfig.getPort())
+                .path("/needs")
+                .queryParam("id", id)
+                .encode()
+                .build()
+                .toUri();
+    }
+
+    public void saveNeed(NeedDto needDto) {
+        restTemplate.postForObject(saveNeedByUri(), needDto, NeedDto.class);
+    }
+
+    private URI saveNeedByUri() {
+        return UriComponentsBuilder.fromHttpUrl(backEndConfig.getBackEndUrl())
+                .port(backEndConfig.getPort())
+                .path("/needs")
+                .encode()
+                .build()
+                .toUri();
+    }
+
+    public void updateNeed(NeedDto needDto) {
+        restTemplate.put(saveNeedByUri(),needDto);
+    }
+
+    public void deleteNeed(Long id) {
+        restTemplate.delete(getNeedsByIdUri(id));
     }
 }

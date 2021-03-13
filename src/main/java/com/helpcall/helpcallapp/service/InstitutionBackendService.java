@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -13,11 +14,9 @@ public class InstitutionBackendService {
 
     private final InstitutionBackendClient institutionBackendClient;
 
-    public List<InstitutionDto> getInstitutions() {
-        return institutionBackendClient.getAllInstitutions();
-    }
+    public List<InstitutionDto> getInstitutions() { return institutionBackendClient.getAllInstitutions();}
 
-    public InstitutionDto getInstitutionById(Long id) {
+    public List<InstitutionDto> getInstitutionById(Long id) {
         return institutionBackendClient.getInstitutionById(id);
     }
 

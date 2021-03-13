@@ -2,6 +2,7 @@ package com.helpcall.helpcallapp.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.helpcall.helpcallapp.observer.Observer;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class VolunteerDto {
+public class VolunteerDto implements Observer {
 
     @JsonProperty("Id")
     public Long id;
@@ -34,15 +35,7 @@ public class VolunteerDto {
     public List<NeedDto> needs;
 
     @Override
-    public String toString() {
-        return "VolunteerDto{" +
-                " name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", lat='" + lat + '\'' +
-                ", lon='" + lon + '\'' +
-                ", description='" + description + '\'' +
-                ", needs=" + needs +
-                '}';
+    public void update(NeedDto needDto) {
+        System.out.println("Do listy potrzeb dodano nową potrzebę: " + needDto.getTitle());
     }
 }
