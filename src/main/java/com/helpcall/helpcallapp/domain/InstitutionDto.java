@@ -1,12 +1,14 @@
 package com.helpcall.helpcallapp.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Setter
@@ -14,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class InstitutionDto {
+public class InstitutionDto implements Serializable {
 
     @JsonProperty("Id")
     public Long id;
@@ -33,5 +35,20 @@ public class InstitutionDto {
     @JsonProperty("IsInstitution")
     public String isInstitution;
     @JsonProperty("Needs")
-    public List<NeedDto> needs;
+    public List<NeedDto> needs = new ArrayList<>();
+
+    @Override
+    public String toString() {
+        return "InstitutionDto{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", lat='" + lat + '\'' +
+                ", lon='" + lon + '\'' +
+                ", description='" + description + '\'' +
+                ", isInstitution='" + isInstitution + '\'' +
+                ", needs=" + needs +
+                '}';
+    }
 }

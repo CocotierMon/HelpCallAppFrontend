@@ -91,13 +91,13 @@ public class MainView extends AppLayout {
         tabs.addThemeVariants(TabsVariant.LUMO_MINIMAL);
         tabs.setId("tabs");
         tabs.add(createMenuItems());
-        tabs.getComponentAt(9).setVisible(false);
-        tabs.getComponentAt(10).setVisible(false);
-        tabs.getComponentAt(11).setVisible(false);
-        tabs.getComponentAt(12).setVisible(false);
-        tabs.getComponentAt(13).setVisible(false);
-        tabs.getComponentAt(14).setVisible(false);
-        tabs.getComponentAt(15).setVisible(false);
+        tabs.getComponentAt(9).setVisible(true);
+        tabs.getComponentAt(10).setVisible(true);
+        tabs.getComponentAt(11).setVisible(true);
+        tabs.getComponentAt(12).setVisible(true);
+        tabs.getComponentAt(13).setVisible(true);
+        tabs.getComponentAt(14).setVisible(true);
+        tabs.getComponentAt(15).setVisible(true);
         return tabs;
     }
 

@@ -131,7 +131,7 @@ public class RegistrationNeedHelpView extends PolymerTemplate<RegistrationNeedHe
                 institution.setIsInstitution("institution");
             }
 
-            service.createInstitution(institution);
+            service.createInstitution(institution);         //implementacja: Spring Security i możliwość logowania
 
             Notification notification = new Notification(
                     "Twoje konto zostało utworzone, możesz się zalogować.", 3000,

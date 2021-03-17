@@ -1,9 +1,11 @@
 package com.helpcall.helpcallapp.views.need;
 
+import com.helpcall.helpcallapp.domain.InstitutionDto;
 import com.helpcall.helpcallapp.domain.NeedDto;
 import com.helpcall.helpcallapp.domain.VolunteerDto;
 import com.helpcall.helpcallapp.observer.Observable;
 import com.helpcall.helpcallapp.observer.Observer;
+import com.helpcall.helpcallapp.service.InstitutionBackendService;
 import com.helpcall.helpcallapp.service.NeedBackendService;
 import com.helpcall.helpcallapp.views.main.MainView;
 import com.vaadin.addon.leaflet4vaadin.LeafletMap;
@@ -54,11 +56,19 @@ public class NewNeedView extends PolymerTemplate<NewNeedViewModel> implements Ob
     private Button vaadinButton;
 
     private List<Observer> observers = new ArrayList<>();
+    private NeedBackendService service;
+    private InstitutionBackendService institutionService;
+    private NeedDto needDto = new NeedDto();
+    private TextField latitude;
+    private TextField longitude;
 
     public static interface NewNeedViewModel extends TemplateModel {
     }
 
-    public NewNeedView(NeedBackendService service) {
+    public NewNeedView(NeedBackendService service, InstitutionBackendService institutionService, NeedDto needDto) {
+        this.service = service;
+        this.institutionService = institutionService;
+
         MapOptions options = new DefaultMapOptions();
         options.setCenter(new LatLng(51.74913908790854, 19.456787109375));
         options.setZoom(7);
@@ -75,8 +85,14 @@ public class NewNeedView extends PolymerTemplate<NewNeedViewModel> implements Ob
         FormLayout form = new FormLayout();
         TextField latitude = new TextField();
         TextField longitude = new TextField();
+        TextField country = new TextField();
+        TextField state = new TextField();
+        TextField city = new TextField();
         longitude.setWidthFull();
         latitude.setWidthFull();
+        country.setReadOnly(true);
+        state.setReadOnly(true);
+        city.setReadOnly(true);
 
         latitude.setValue(marker.getLatLng().getLat().toString());
         latitude.setReadOnly(true);
@@ -88,8 +104,6 @@ public class NewNeedView extends PolymerTemplate<NewNeedViewModel> implements Ob
             longitude.setValue(newPosition.getLng().toString());
         });
 
-        NeedDto needDto = new NeedDto();
-
         marker.onDragEnd(dragEndEvent -> {
             needDto.setLat(latitude.getValue());
             needDto.setLon(longitude.getValue());
@@ -97,6 +111,12 @@ public class NewNeedView extends PolymerTemplate<NewNeedViewModel> implements Ob
 
         form.addFormItem(latitude, "Szerokość:");
         form.addFormItem(longitude, "Długość:");
+        form.addFormItem(country, "Kraj");       //https://nominatim.openstreetmap.org/reverse?lat=50.
+                                                         // 803339712828986&lon=19.116208585832624&json_callback=<string>&zoom=10
+                                                        //dodanie połączenia do bazy wyszukującej miejscowość po koordynatach
+
+        form.addFormItem(state, "Województwo");
+        form.addFormItem(city, "Miejscowość");
 
         marker.addTo(leafletMap);
 
@@ -105,31 +125,51 @@ public class NewNeedView extends PolymerTemplate<NewNeedViewModel> implements Ob
         vaadinVerticalLayout.add(form);
 
         vaadinButton.addClickListener(buttonClickEvent -> {
-            needDto.setTitle(title.getValue());
-            needDto.setDescription(description.getValue());
-            needDto.setEndTime(endDate.getValue());
-            VolunteerDto volunteer = new VolunteerDto();
-            registerObserver(volunteer);    //dokończyć metodę, aby pobierała id prawdziwego zalogowanego wolontariusza i wysyłała prawdziwą wiadomość
-            service.createNeed(needDto);
-            try {
-                notifyObservers(needDto);
-            } catch (NoSuchFieldException e) {
-                e.printStackTrace();
-            }
 
+            setNewNeed(needDto);
 
-            Notification notification = new Notification(
-                    "Twoja potrzeba została dodana do listy potrzeb. " +
-                            "Możesz ją teraz znaleźć w swoim panelu oraz na ogólnej mapie.", 3000,
-                    Notification.Position.TOP_START);
-            notification.setOpened(true);
+            addNotification();
         });
+    }
+
+    public void setNewNeed(NeedDto needDto) {
+
+        needDto.setTitle(title.getValue());
+        needDto.setDescription(description.getValue());
+        needDto.setEndTime(endDate.getValue());
+        InstitutionDto institutionDto = institutionService.getInstitutions().get(0);
+        System.out.println(institutionDto);
+        needDto.setInstitution(institutionDto);
+        List<NeedDto> needDtos = new ArrayList<>();
+        needDtos.add(needDto);
+        institutionDto.setNeeds(needDtos);
+        System.out.println(institutionDto);
+
+        VolunteerDto volunteer = new VolunteerDto();
+        registerObserver(volunteer);        //implementacja metody do pobierania danych zalogowanego użytkownika,
+                                            // implementacja metody wysyłającej wiadomości do obserwatorów
+
+        institutionService.updateInstitution(institutionDto);
+        service.createNeed(needDto);
+
+        try {
+            notifyObservers(needDto);
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void addNotification() {
+        Notification notification = new Notification(
+                "Twoja potrzeba została dodana do listy potrzeb. " +
+                        "Możesz ją teraz znaleźć w swoim panelu oraz na ogólnej mapie.", 3000,
+                Notification.Position.TOP_START);
+        notification.setOpened(true);
     }
 
     @Override
     public void registerObserver(Observer observer) {
         observers.add(observer);
-        System.out.println("dodano nowego wolontariusza");
     }
 
     @Override

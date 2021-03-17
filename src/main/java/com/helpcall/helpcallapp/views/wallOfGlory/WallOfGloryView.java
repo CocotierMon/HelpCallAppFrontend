@@ -35,7 +35,7 @@ public class WallOfGloryView extends PolymerTemplate<WallOfGloryViewModel> {
         List<VolunteerDto> needsList = volunteerBackendService.getVolunteers();
         Grid<VolunteerDto> vaadinGrid = new Grid<>(VolunteerDto.class);
         vaadinGrid.setItems(needsList);
-//na razie zwraca listę wolontariuszy, stworzyć metodę, która będzie filtrować listę potrzeb wg id wolontariusza
+                    //na razie zwraca listę wolontariuszy, stworzyć metodę, która będzie filtrować listę potrzeb wg id wolontariusza
         vaadinGrid.addThemeVariants(GridVariant.LUMO_ROW_STRIPES);
         vaadinHorizontalLayout.add(vaadinGrid);
     }

@@ -20,6 +20,6 @@ public class StatisticsView extends PolymerTemplate<StatisticsViewModel> {
     public static interface StatisticsViewModel extends TemplateModel {
     }
 
-    public StatisticsView() {
+    public StatisticsView() { // implementacja: zliczanie liczby wszystkich potrzeb, dodanie statystyk
     }
 }

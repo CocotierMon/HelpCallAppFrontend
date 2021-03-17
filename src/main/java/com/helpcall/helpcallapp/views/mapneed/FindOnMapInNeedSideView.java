@@ -39,5 +39,7 @@ public class FindOnMapInNeedSideView extends PolymerTemplate<FindOnMapInNeedSide
         leafletMap.setWidth("800px");
 
         vaadinHorizontalLayout.add(leafletMap);
+
+        // implementacja: mapa pokazująca tylko wolontariuszy
     }
 }

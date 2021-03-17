@@ -119,7 +119,7 @@ public class RegistrationVolunteerView extends PolymerTemplate<RegistrationVolun
             volunteer.setLat(latitude.getValue());
             volunteer.setLon(longitude.getValue());
 
-            service.createVolunteer(volunteer);
+            service.createVolunteer(volunteer);         // implementacja: Spring Security i możliwość logowania
 
             Notification notification = new Notification(
                         "Twoje konto zostało utworzone, możesz się zalogować.", 3000,

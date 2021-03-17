@@ -24,5 +24,7 @@ public class LoginView extends PolymerTemplate<LoginViewModel> {
     }
 
     public LoginView() {
+
+        //implementacja Spring Security: na podstawie danych z bazy
     }
 }

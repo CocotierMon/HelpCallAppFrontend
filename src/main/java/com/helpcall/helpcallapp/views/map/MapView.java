@@ -40,5 +40,7 @@ public class MapView extends PolymerTemplate<MapViewModel> {
         leafletMap.setWidth("800px");
 
         vaadinVerticalLayout1.add(leafletMap);
+
+        // dodać mozliwość wybierania danych do pokazania: wybór wolontariuszy lub potrzeb
     }
 }
