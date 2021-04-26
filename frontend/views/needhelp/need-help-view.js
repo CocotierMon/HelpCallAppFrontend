@@ -20,7 +20,7 @@ class NeedHelpView extends PolymerElement {
    <vaadin-vertical-layout theme="spacing" style="align-items: center; justify-content: center;">
     <h3 style="align-self: center; margin: var(--lumo-space-m); padding: var(--lumo-space-m);">✅ Wykorzystaj pinezkę, aby określić na mapie miejsce realizacji potrzeby.</h3>
     <h3 style="align-self: center; margin: var(--lumo-space-m); padding: var(--lumo-space-m);">✅ Określ w kalendarzu czas, do kiedy Twoje marzenie powinno zostać zrealizowane.</h3>
-    <h3 style="align-self: center; margin: var(--lumo-space-m); padding: var(--lumo-space-m);">✅ Poinformuj o swoim marzeniu innych ludzi - np. za pomocą mediów społecznościowych - teraz pozwól wolontariuszom działć.</h3>
+    <h3 style="align-self: center; margin: var(--lumo-space-m); padding: var(--lumo-space-m);">✅ Poinformuj o swoim marzeniu innych ludzi - np. za pomocą mediów społecznościowych - teraz pozwól wolontariuszom działać.</h3>
    </vaadin-vertical-layout>
   </vaadin-horizontal-layout>
  </vaadin-vertical-layout>

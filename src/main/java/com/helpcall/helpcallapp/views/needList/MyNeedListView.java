@@ -33,7 +33,7 @@ public class MyNeedListView extends PolymerTemplate<MyNeedListViewModel> {
     public static interface MyNeedListViewModel extends TemplateModel {
     }
 
-    public MyNeedListView(NeedBackendService needBackendService) throws JsonProcessingException {
+    public MyNeedListView(NeedBackendService needBackendService) {
 
         List<NeedDto> needs = needBackendService.getNeeds();
         // implementacja: metoda pobierająca potrzeby zalogowanego uzytkownika

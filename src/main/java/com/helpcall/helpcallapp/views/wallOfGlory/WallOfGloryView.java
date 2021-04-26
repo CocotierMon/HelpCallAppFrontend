@@ -1,10 +1,12 @@
 package com.helpcall.helpcallapp.views.wallOfGlory;
 
-import com.helpcall.helpcallapp.domain.VolunteerDto;
-import com.helpcall.helpcallapp.service.VolunteerBackendService;
+import com.helpcall.helpcallapp.client.VolunteersWallBackendClient;
+import com.helpcall.helpcallapp.domain.VolunteerWallDto;
+import com.helpcall.helpcallapp.service.VolunteerWallBackendService;
 import com.helpcall.helpcallapp.views.main.MainView;
 import com.helpcall.helpcallapp.views.wallOfGlory.WallOfGloryView.WallOfGloryViewModel;
 import com.vaadin.flow.component.Tag;
+import com.vaadin.flow.component.checkbox.Checkbox;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.grid.Grid;
@@ -15,6 +17,7 @@ import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.templatemodel.TemplateModel;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
@@ -28,14 +31,21 @@ public class WallOfGloryView extends PolymerTemplate<WallOfGloryViewModel> {
     @Id("vaadinHorizontalLayout")
     private HorizontalLayout vaadinHorizontalLayout;
 
+    @Autowired
+    VolunteersWallBackendClient service;
+
     public static interface WallOfGloryViewModel extends TemplateModel {
     }
 
-    public WallOfGloryView(VolunteerBackendService volunteerBackendService) {
-        List<VolunteerDto> needsList = volunteerBackendService.getVolunteers();
-        Grid<VolunteerDto> vaadinGrid = new Grid<>(VolunteerDto.class);
-        vaadinGrid.setItems(needsList);
-                    //na razie zwraca listę wolontariuszy, stworzyć metodę, która będzie filtrować listę potrzeb wg id wolontariusza
+    public WallOfGloryView(VolunteerWallBackendService service) {
+
+        List<VolunteerWallDto> volunteerWallDtos = service.getVolunteersWall(12L);
+        //stworzyć metodę, która będzie tworzyć listę potrzeb wg id zalogowanego wolontariusza
+
+        Grid<VolunteerWallDto> vaadinGrid = new Grid<>(VolunteerWallDto.class);
+        vaadinGrid.setColumnReorderingAllowed(true);
+        vaadinGrid.addComponentColumn(volunteerWallDto -> new Checkbox()).setHeader("Czy potwierdzono wykonanie?");
+        vaadinGrid.setItems(volunteerWallDtos);
         vaadinGrid.addThemeVariants(GridVariant.LUMO_ROW_STRIPES);
         vaadinHorizontalLayout.add(vaadinGrid);
     }

@@ -2,6 +2,7 @@ package com.helpcall.helpcallapp.service;
 
 import com.helpcall.helpcallapp.client.InstitutionBackendClient;
 import com.helpcall.helpcallapp.domain.InstitutionDto;
+import com.helpcall.helpcallapp.domain.NeedDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +16,7 @@ public class InstitutionBackendService {
 
     public List<InstitutionDto> getInstitutions() { return institutionBackendClient.getAllInstitutions();}
 
-    public List<InstitutionDto> getInstitutionById(Long id) {
+    public InstitutionDto getInstitutionById(Long id) {
         return institutionBackendClient.getInstitutionById(id);
     }
 
@@ -29,5 +30,9 @@ public class InstitutionBackendService {
 
     public void updateInstitution(InstitutionDto institutionDto) {
         institutionBackendClient.updateInstitution(institutionDto);
+    }
+
+    public void addNeed(NeedDto needDto, Long id) {
+        institutionBackendClient.addNeed(needDto, id);
     }
 }

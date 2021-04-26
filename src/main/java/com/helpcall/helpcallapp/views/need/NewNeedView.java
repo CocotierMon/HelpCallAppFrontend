@@ -137,20 +137,20 @@ public class NewNeedView extends PolymerTemplate<NewNeedViewModel> implements Ob
         needDto.setTitle(title.getValue());
         needDto.setDescription(description.getValue());
         needDto.setEndTime(endDate.getValue());
+
         InstitutionDto institutionDto = institutionService.getInstitutions().get(0);
         System.out.println(institutionDto);
+
+        institutionDto.getNeeds().add(needDto);
+
         needDto.setInstitution(institutionDto);
-        List<NeedDto> needDtos = new ArrayList<>();
-        needDtos.add(needDto);
-        institutionDto.setNeeds(needDtos);
         System.out.println(institutionDto);
 
         VolunteerDto volunteer = new VolunteerDto();
         registerObserver(volunteer);        //implementacja metody do pobierania danych zalogowanego użytkownika,
                                             // implementacja metody wysyłającej wiadomości do obserwatorów
 
-        institutionService.updateInstitution(institutionDto);
-        service.createNeed(needDto);
+        institutionService.addNeed(needDto, institutionDto.getId());
 
         try {
             notifyObservers(needDto);

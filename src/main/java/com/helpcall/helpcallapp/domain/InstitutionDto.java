@@ -5,10 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 @Setter
@@ -35,7 +33,7 @@ public class InstitutionDto implements Serializable {
     @JsonProperty("IsInstitution")
     public String isInstitution;
     @JsonProperty("Needs")
-    public List<NeedDto> needs = new ArrayList<>();
+    public List<NeedDto> needs;
 
     @Override
     public String toString() {

@@ -2,6 +2,7 @@ package com.helpcall.helpcallapp.client;
 
 import com.helpcall.helpcallapp.config.BackEndConfig;
 import com.helpcall.helpcallapp.domain.InstitutionDto;
+import com.helpcall.helpcallapp.domain.NeedDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -35,10 +36,10 @@ public class InstitutionBackendClient {
                 .toUri();
     }
 
-    public List<InstitutionDto> getInstitutionById(Long id) {
-        Optional<InstitutionDto[]> institutionDtos = Optional.ofNullable(
-                restTemplate.getForObject(getInstitutionsByIdUri(id), InstitutionDto[].class));
-        return institutionDtos.map(Arrays::asList).orElseGet(ArrayList::new);
+    public InstitutionDto getInstitutionById(Long id) {
+        Optional<InstitutionDto> institutionDto = Optional.ofNullable(restTemplate.getForObject(getInstitutionsByIdUri(id),
+                InstitutionDto.class));
+        return institutionDto.orElse(new InstitutionDto());
     }
 
     private URI getInstitutionsByIdUri(Long id) {
@@ -70,5 +71,9 @@ public class InstitutionBackendClient {
 
     public void updateInstitution(InstitutionDto institutionDto) {
         restTemplate.put(saveInstitutionByUri(), institutionDto);
+    }
+
+    public void addNeed(NeedDto needDto, Long id) {
+        restTemplate.put("http://localhost:8080/v1/institutions/addNeed/" + id, needDto, InstitutionDto.class);
     }
 }
