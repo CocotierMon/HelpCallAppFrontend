@@ -35,4 +35,8 @@ public class InstitutionBackendService {
     public void addNeed(NeedDto needDto, Long id) {
         institutionBackendClient.addNeed(needDto, id);
     }
+
+    public List<NeedDto> getInstitutionsNeeds(Long id) {
+        return institutionBackendClient.getInstitutionsNeeds(id);
+    }
 }

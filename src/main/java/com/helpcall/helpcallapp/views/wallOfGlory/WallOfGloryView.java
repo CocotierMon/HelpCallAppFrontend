@@ -46,6 +46,9 @@ public class WallOfGloryView extends PolymerTemplate<WallOfGloryViewModel> {
         vaadinGrid.setColumnReorderingAllowed(true);
         vaadinGrid.addComponentColumn(volunteerWallDto -> new Checkbox()).setHeader("Czy potwierdzono wykonanie?");
         vaadinGrid.setItems(volunteerWallDtos);
+        vaadinGrid.getColumnByKey("title").setHeader("Tytuł");
+        vaadinGrid.getColumnByKey("endTime").setHeader("Data zakończenia");
+        vaadinGrid.getColumnByKey("institutionName").setHeader("Potrzeba spełniona dla:");
         vaadinGrid.addThemeVariants(GridVariant.LUMO_ROW_STRIPES);
         vaadinHorizontalLayout.add(vaadinGrid);
     }

@@ -76,4 +76,10 @@ public class InstitutionBackendClient {
     public void addNeed(NeedDto needDto, Long id) {
         restTemplate.put("http://localhost:8080/v1/institutions/addNeed/" + id, needDto, InstitutionDto.class);
     }
+
+    public List<NeedDto> getInstitutionsNeeds(Long id) {
+        Optional<NeedDto[]> needDto = Optional.ofNullable(restTemplate.getForObject(
+                "http://localhost:8080/v1/institutions/needs/" + id, NeedDto[].class));
+        return needDto.map(Arrays::asList).orElseGet(ArrayList::new);
+    }
 }

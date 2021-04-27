@@ -1,8 +1,7 @@
 package com.helpcall.helpcallapp.views.needList;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.helpcall.helpcallapp.domain.NeedDto;
-import com.helpcall.helpcallapp.service.NeedBackendService;
+import com.helpcall.helpcallapp.service.InstitutionBackendService;
 import com.helpcall.helpcallapp.views.main.MainView;
 import com.helpcall.helpcallapp.views.needList.MyNeedListView.MyNeedListViewModel;
 import com.vaadin.flow.component.Tag;
@@ -33,13 +32,20 @@ public class MyNeedListView extends PolymerTemplate<MyNeedListViewModel> {
     public static interface MyNeedListViewModel extends TemplateModel {
     }
 
-    public MyNeedListView(NeedBackendService needBackendService) {
+    public MyNeedListView(InstitutionBackendService institutionBackendService) {
 
-        List<NeedDto> needs = needBackendService.getNeeds();
+        List<NeedDto> needs = institutionBackendService.getInstitutionsNeeds(5L);
         // implementacja: metoda pobierająca potrzeby zalogowanego uzytkownika
 
         Grid<NeedDto> vaadinGrid = new Grid<>(NeedDto.class);
+        vaadinGrid.setColumnReorderingAllowed(true);
         vaadinGrid.setItems(needs);
+        vaadinGrid.getColumns().forEach(needDtoColumn -> needDtoColumn.setAutoWidth(true));
+        vaadinGrid.setColumns("title", "endTime", "done", "description");
+        vaadinGrid.getColumnByKey("title").setHeader("Tytuł");
+        vaadinGrid.getColumnByKey("endTime").setHeader("Data zakończenia");
+        vaadinGrid.getColumnByKey("done").setHeader("Potwierdzono zakończenie?");
+        vaadinGrid.getColumnByKey("description").setHeader("Opis");
         vaadinGrid.addComponentColumn(needDtos -> new Checkbox()).setHeader("Zamknięte ?");
 
         vaadinGrid.addThemeVariants(GridVariant.LUMO_ROW_STRIPES);
