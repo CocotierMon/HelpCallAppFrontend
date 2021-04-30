@@ -92,8 +92,8 @@ public class RegistrationNeedHelpView extends PolymerTemplate<RegistrationNeedHe
         InstitutionDto institution = new InstitutionDto();
 
         marker.onDragEnd(dragEndEvent -> {
-            institution.setLat(latitude.getValue());
-            institution.setLon(longitude.getValue());
+            institution.setLat(marker.getLatLng().getLat());
+            institution.setLon(marker.getLatLng().getLng());
         });
 
         form.addFormItem(latitude, "Szerokość:");

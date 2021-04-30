@@ -1,10 +1,13 @@
 package com.helpcall.helpcallapp.views.mapVol;
 
+import com.helpcall.helpcallapp.service.VolunteerBackendService;
 import com.helpcall.helpcallapp.views.main.MainView;
 import com.helpcall.helpcallapp.views.mapVol.FindOnMapVolunteerSideView.FindOnMapVolunteerSideViewModel;
 import com.vaadin.addon.leaflet4vaadin.LeafletMap;
 import com.vaadin.addon.leaflet4vaadin.layer.map.options.DefaultMapOptions;
 import com.vaadin.addon.leaflet4vaadin.layer.map.options.MapOptions;
+import com.vaadin.addon.leaflet4vaadin.layer.ui.marker.Marker;
+import com.vaadin.addon.leaflet4vaadin.types.Icon;
 import com.vaadin.addon.leaflet4vaadin.types.LatLng;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.CssImport;
@@ -29,7 +32,7 @@ public class FindOnMapVolunteerSideView extends PolymerTemplate<FindOnMapVolunte
     public static interface FindOnMapVolunteerSideViewModel extends TemplateModel {
     }
 
-    public FindOnMapVolunteerSideView() {
+    public FindOnMapVolunteerSideView(VolunteerBackendService service) {
         MapOptions options = new DefaultMapOptions();
         options.setCenter(new LatLng(51.74913908790854, 19.456787109375));
         options.setZoom(7);
@@ -37,6 +40,11 @@ public class FindOnMapVolunteerSideView extends PolymerTemplate<FindOnMapVolunte
         leafletMap.setBaseUrl("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png");
         leafletMap.setHeight("800px");
         leafletMap.setWidth("800px");
+
+
+        Marker marker = new Marker();
+        marker.setIcon(new Icon("icons/marker.png"));
+       // marker.setLatLng(lat, lon, names);
 
         vaadinHorizontalLayout.add(leafletMap);
 

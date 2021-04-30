@@ -39,7 +39,7 @@ public class WallOfGloryView extends PolymerTemplate<WallOfGloryViewModel> {
 
     public WallOfGloryView(VolunteerWallBackendService service) {
 
-        List<VolunteerWallDto> volunteerWallDtos = service.getVolunteersWall(12L);
+        List<VolunteerWallDto> volunteerWallDtos = service.getVolunteersWall(22L);
         //stworzyć metodę, która będzie tworzyć listę potrzeb wg id zalogowanego wolontariusza
 
         Grid<VolunteerWallDto> vaadinGrid = new Grid<>(VolunteerWallDto.class);

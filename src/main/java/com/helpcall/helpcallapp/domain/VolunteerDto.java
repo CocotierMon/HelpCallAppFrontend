@@ -26,16 +26,26 @@ public class VolunteerDto implements Observer {
     @JsonProperty("Password")
     public String password;
     @JsonProperty("Latitude")
-    public String lat;
+    public double lat;
     @JsonProperty("Longitude")
-    public String lon;
+    public double lon;
     @JsonProperty("Description")
     public String description;
     @JsonProperty("Needs")
     public List<NeedDto> needs;
 
+    public VolunteerDto(double lat, double lon, String name) {
+        this.lat = lat;
+        this.lon = lon;
+        this.name = name;
+    }
+
     @Override
     public void update(NeedDto needDto) {
         System.out.println("Do listy potrzeb dodano nową potrzebę: " + needDto.getTitle());
+    }
+
+    public Point createPoint(double lat, double lon, String name) {
+        return new Point(lat, lon, name);
     }
 }

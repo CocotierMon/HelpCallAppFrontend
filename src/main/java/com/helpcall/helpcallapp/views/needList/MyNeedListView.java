@@ -34,7 +34,7 @@ public class MyNeedListView extends PolymerTemplate<MyNeedListViewModel> {
 
     public MyNeedListView(InstitutionBackendService institutionBackendService) {
 
-        List<NeedDto> needs = institutionBackendService.getInstitutionsNeeds(5L);
+        List<NeedDto> needs = institutionBackendService.getInstitutionsNeeds(15L);
         // implementacja: metoda pobierająca potrzeby zalogowanego uzytkownika
 
         Grid<NeedDto> vaadinGrid = new Grid<>(NeedDto.class);

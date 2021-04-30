@@ -25,9 +25,9 @@ public class InstitutionDto implements Serializable {
     @JsonProperty("Password")
     public String password;
     @JsonProperty("Latitude")
-    public String lat;
+    public double lat;
     @JsonProperty("Longitude")
-    public String lon;
+    public double lon;
     @JsonProperty("Description")
     public String description;
     @JsonProperty("IsInstitution")
@@ -48,5 +48,15 @@ public class InstitutionDto implements Serializable {
                 ", isInstitution='" + isInstitution + '\'' +
                 ", needs=" + needs +
                 '}';
+    }
+
+    public Point createPoint(double lat, double lon, String name) {
+        return new Point(lat, lon, name);
+    }
+
+    public InstitutionDto(double lat, double lon, String name) {
+        this.lat = lat;
+        this.lon = lon;
+        this.name = name;
     }
 }
