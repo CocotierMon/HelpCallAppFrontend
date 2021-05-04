@@ -6,6 +6,9 @@ import com.helpcall.helpcallapp.domain.VolunteerDto;
 import com.helpcall.helpcallapp.service.InstitutionBackendService;
 import com.helpcall.helpcallapp.service.VolunteerBackendService;
 import com.vaadin.addon.leaflet4vaadin.LeafletMap;
+import com.vaadin.addon.leaflet4vaadin.controls.LayersControl;
+import com.vaadin.addon.leaflet4vaadin.controls.LayersControlOptions;
+import com.vaadin.addon.leaflet4vaadin.layer.groups.LayerGroup;
 import com.vaadin.addon.leaflet4vaadin.layer.map.options.DefaultMapOptions;
 import com.vaadin.addon.leaflet4vaadin.layer.map.options.MapOptions;
 import com.vaadin.addon.leaflet4vaadin.layer.ui.marker.Marker;
@@ -49,26 +52,16 @@ public class MapView extends PolymerTemplate<MapViewModel> {
         leafletMap.setHeight("800px");
         leafletMap.setWidth("800px");
 
-        List<Marker> markersFromInstitutions = createInstitutionsLatLngFromPoints(service);
-        markersFromInstitutions.forEach(marker -> marker.addTo(leafletMap));
-        List<Marker> markersFromVolunteers = createVolunteersLatLngFromPoints(volunteerBackendService);
-        markersFromVolunteers.forEach(marker -> marker.addTo(leafletMap));
+        LayersControlOptions layersControlOptions = new LayersControlOptions();
+        layersControlOptions.setCollapsed(false);
+        LayersControl layersControl = new LayersControl(layersControlOptions);
+        layersControl.addTo(leafletMap);
+        LayerGroup layerGroup = new LayerGroup(createInstitutionsLatLngFromPoints(service));
+        layersControl.addOverlay(layerGroup, "Pokaż, kto może potrzebować pomocy");
+        LayerGroup layerGroup1 = new LayerGroup(createVolunteersLatLngFromPoints(volunteerBackendService));
+        layersControl.addOverlay(layerGroup1, "Pokaż wzsystkich wolontariuszy");
+
         vaadinVerticalLayout1.add(leafletMap);
-
-        // dodać mozliwość wybierania danych do pokazania: wybór wolontariuszy lub potrzeb
-    }
-
-    private List<Marker> createVolunteersLatLngFromPoints(VolunteerBackendService volunteerBackendService) {
-        List<Point> points = createPointsFromVolunteers(volunteerBackendService);
-        List<LatLng> latLngs = points.stream().map(point -> new LatLng(point.getLat(), point.getLon())).collect(Collectors.toList());
-        List<Marker> markers = latLngs.stream().map(Marker::new).collect(Collectors.toList());
-        markers.forEach(marker -> marker.setIcon(new Icon("icons/marker.png")));
-
-        for(int i = 0; i < markers.size(); i++) {
-            markers.get(i).setTitle(points.get(i).getName() + ": wolontariusz");
-        }
-
-        return markers;
     }
 
     private List<Point> createPointsFromVolunteers(VolunteerBackendService volunteerBackendService) {
@@ -91,16 +84,33 @@ public class MapView extends PolymerTemplate<MapViewModel> {
                 institutionDto.getLat(), institutionDto.getLon(), institutionDto.getName())).collect(Collectors.toList());
     }
 
-    public List<Marker> createInstitutionsLatLngFromPoints(InstitutionBackendService service) {
+    public LayerGroup createInstitutionsLatLngFromPoints(InstitutionBackendService service) {
+        LayerGroup layerGroup = new LayerGroup();
         List<Point> points = createPointsFromInstitutions(service);
         List<LatLng> latLngs = points.stream().map(point -> new LatLng(point.getLat(), point.getLon())).collect(Collectors.toList());
         List<Marker> markers = latLngs.stream().map(Marker::new).collect(Collectors.toList());
-        markers.forEach(marker -> marker.setIcon(new Icon("icons/marker.png")));
+        markers.forEach(marker -> marker.setIcon(new Icon("icons/orange.png")));
 
         for(int i = 0; i < markers.size(); i++) {
             markers.get(i).setTitle(points.get(i).getName() + ": potrzebuję pomocy");
+            markers.forEach(marker -> marker.addTo(layerGroup));
         }
 
-        return markers;
+        return layerGroup;
+    }
+
+    private LayerGroup createVolunteersLatLngFromPoints(VolunteerBackendService volunteerBackendService) {
+        LayerGroup layerGroup = new LayerGroup();
+        List<Point> points = createPointsFromVolunteers(volunteerBackendService);
+        List<LatLng> latLngs = points.stream().map(point -> new LatLng(point.getLat(), point.getLon())).collect(Collectors.toList());
+        List<Marker> markers = latLngs.stream().map(Marker::new).collect(Collectors.toList());
+        markers.forEach(marker -> marker.setIcon(new Icon("icons/green.png")));
+
+        for(int i = 0; i < markers.size(); i++) {
+            markers.get(i).setTitle(points.get(i).getName() + ": wolontariusz");
+            markers.forEach(marker -> marker.addTo(layerGroup));
+        }
+
+        return layerGroup;
     }
 }

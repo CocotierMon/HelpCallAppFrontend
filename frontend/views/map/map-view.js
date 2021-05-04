@@ -12,12 +12,6 @@ class MapView extends PolymerElement {
  <vaadin-horizontal-layout class="header" style="width: 100%; flex-basis: var(--lumo-size-l); flex-shrink: 0; background-color: var(--lumo-contrast-10pct); align-self: center; align-items: center; justify-content: center; height: 80%;" id="vaadinHorizontalLayout">
   <h1 id="h1" style="align-self: center; margin: var(--lumo-space-m); padding: var(--lumo-space-m);">Sprawdź na mapie</h1>
  </vaadin-horizontal-layout>
- <vaadin-button id="vaadinButton" style="flex-grow: 0; align-self: stretch;">
-   Szukaj wolontariuszy 
- </vaadin-button>
- <vaadin-button id="vaadinButton1" style="align-self: stretch;">
-   Szukaj potrzeb do spełnienia 
- </vaadin-button>
 </vaadin-vertical-layout>
 <vaadin-vertical-layout theme="spacing" id="vaadinVerticalLayout1" style="width: 100%; height: 100%; margin: var(--lumo-space-m); padding: var(--lumo-space-m); justify-content: center; align-items: center; flex-direction: row;"></vaadin-vertical-layout>
 `;
