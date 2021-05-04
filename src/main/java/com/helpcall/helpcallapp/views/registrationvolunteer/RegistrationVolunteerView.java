@@ -89,9 +89,12 @@ public class RegistrationVolunteerView extends PolymerTemplate<RegistrationVolun
 
         VolunteerDto volunteer = new VolunteerDto();
 
+        volunteer.setLat(Double.parseDouble(latitude.getValue()));
+        volunteer.setLon(Double.parseDouble(longitude.getValue()));
+
         marker.onDragEnd(dragEndEvent -> {
-            volunteer.setLat(marker.getLatLng().getLat());
-            volunteer.setLon(marker.getLatLng().getLng());
+            volunteer.setLat(Double.parseDouble(latitude.getValue()));
+            volunteer.setLon(Double.parseDouble(longitude.getValue()));
         });
 
         form.addFormItem(latitude, "Szerokość:");
@@ -116,8 +119,6 @@ public class RegistrationVolunteerView extends PolymerTemplate<RegistrationVolun
             volunteer.setEmail(email.getValue());
             volunteer.setPassword(password.getValue());
             volunteer.setDescription(description.getValue());
-            volunteer.setLat(marker.getLatLng().getLat());
-            volunteer.setLon(marker.getLatLng().getLng());
 
             service.createVolunteer(volunteer);         // implementacja: Spring Security i możliwość logowania
 

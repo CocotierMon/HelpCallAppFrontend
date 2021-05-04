@@ -105,8 +105,8 @@ public class NewNeedView extends PolymerTemplate<NewNeedViewModel> implements Ob
         });
 
         marker.onDragEnd(dragEndEvent -> {
-            needDto.setLat(latitude.getValue());
-            needDto.setLon(longitude.getValue());
+            needDto.setLat(Double.parseDouble(latitude.getValue()));
+            needDto.setLon(Double.parseDouble(longitude.getValue()));
         });
 
         form.addFormItem(latitude, "Szerokość:");

@@ -32,11 +32,21 @@ public class NeedDto implements Serializable {
     @JsonProperty("Description")
     public String description;
     @JsonProperty("Latitude")
-    public String lat;
+    public double lat;
     @JsonProperty("Longitude")
-    public String lon;
+    public double lon;
     @JsonIgnore
     private InstitutionDto institution;
+
+    public NeedDto(double lat, double lon, String title) {
+        this.lat = lat;
+        this.lon = lon;
+        this.title = title;
+    }
+
+    public Point createPoint(double lat, double lon, String name) {
+        return new Point(lat, lon, name);
+    }
 
     @Override
     public String toString() {
