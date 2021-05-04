@@ -84,3 +84,5 @@ public class FindOnMapInNeedSideView extends PolymerTemplate<FindOnMapInNeedSide
         return layerGroup;
     }
 }
+
+// stworzyć sposób na komunikowanie się zalogowanej instytucji z wybranym na mapie wolontariuszem

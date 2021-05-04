@@ -32,7 +32,7 @@ public class OpinionsView extends PolymerTemplate<OpinionsViewModel> {
     public OpinionsView() {
         Carousel carousel = Carousel.create()
                 .withAutoplay()
-                .withDuration(3, TimeUnit.SECONDS);
+                .withDuration(6, TimeUnit.SECONDS);
 
         carousel.setWidth("600px");
         carousel.setHeight("300px");

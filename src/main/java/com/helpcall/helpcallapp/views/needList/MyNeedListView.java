@@ -51,4 +51,7 @@ public class MyNeedListView extends PolymerTemplate<MyNeedListViewModel> {
         vaadinGrid.addThemeVariants(GridVariant.LUMO_ROW_STRIPES);
         vaadinHorizontalLayout.add(vaadinGrid);
     }
+
+    // dodać możliwość sprawdzenia, który wolontariusz jest przypisany do realizacji potrzeby i możliwość
+    // wysłania do niego wiadomości prywatnej
 }

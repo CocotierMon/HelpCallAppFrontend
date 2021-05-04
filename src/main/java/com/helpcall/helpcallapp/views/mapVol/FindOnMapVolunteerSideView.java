@@ -84,3 +84,5 @@ public class FindOnMapVolunteerSideView extends PolymerTemplate<FindOnMapVolunte
         return layerGroup;
     }
 }
+
+// dodać możliwość zapisania się wolontariusza do realizacji potrzeb

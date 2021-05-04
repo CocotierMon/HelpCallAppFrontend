@@ -184,3 +184,5 @@ public class NewNeedView extends PolymerTemplate<NewNeedViewModel> implements Ob
         observers.remove(observer);
     }
 }
+
+// ograniczenie możliwości wybierania daty realizacji potrzeby do dat przyszłych

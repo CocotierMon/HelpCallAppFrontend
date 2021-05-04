@@ -53,3 +53,5 @@ public class WallOfGloryView extends PolymerTemplate<WallOfGloryViewModel> {
         vaadinHorizontalLayout.add(vaadinGrid);
     }
 }
+
+// dodać możliwość skontaktowania się z instytucją, której potrzebę realizuje wolontariusz
