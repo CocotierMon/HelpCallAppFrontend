@@ -59,7 +59,7 @@ public class MapView extends PolymerTemplate<MapViewModel> {
         LayerGroup layerGroup = new LayerGroup(createInstitutionsLatLngFromPoints(service));
         layersControl.addOverlay(layerGroup, "Pokaż, kto może potrzebować pomocy");
         LayerGroup layerGroup1 = new LayerGroup(createVolunteersLatLngFromPoints(volunteerBackendService));
-        layersControl.addOverlay(layerGroup1, "Pokaż wzsystkich wolontariuszy");
+        layersControl.addOverlay(layerGroup1, "Pokaż wszystkich wolontariuszy");
 
         vaadinVerticalLayout1.add(leafletMap);
     }
