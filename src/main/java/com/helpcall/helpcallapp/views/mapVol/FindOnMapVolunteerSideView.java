@@ -86,3 +86,7 @@ public class FindOnMapVolunteerSideView extends PolymerTemplate<FindOnMapVolunte
 }
 
 // dodać możliwość zapisania się wolontariusza do realizacji potrzeb
+// dodać możliwość wyszukiwania potrzeb, które trzeba zrealizować do określonej daty
+// dodać możliwość wyszukania innych wolontariuszy i poproszenia ich o wsparcie
+// dodać "pulsującą flarę" jako oznaczenie wolontariusza, który potrzebuje wsparcia - możliwość dodania takiego znaczka do mapy
+// oraz ustawienie jego widoczności dla innych wolontariuszy, a także skontatkowania się

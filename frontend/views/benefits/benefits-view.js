@@ -20,7 +20,7 @@ class BenefitsView extends PolymerElement {
   <vaadin-vertical-layout theme="spacing">
    <h1 style="align-self: center; margin: var(--lumo-space-m); padding: var(--lumo-space-m); margin-bottom: var(--lumo-space-xs); padding-bottom: var(--lumo-space-xs);">👥</h1>
    <h3 style="align-self: center; margin: var(--lumo-space-m); padding: var(--lumo-space-m);">Wsparcie</h3>
-   <h5 style="align-self: center; width: 50%; margin: var(--lumo-space-m);">Jeśli czujesz, ze samodzielnie nie dasz rady spełnić czyjejś prośby, możesz znaleźć innych wolontariuszy wokół siebie i nawiązać z nimi kontakt.</h5>
+   <h5 style="align-self: center; width: 50%; margin: var(--lumo-space-m);">Jeśli czujesz, że samodzielnie nie dasz rady spełnić czyjejś prośby, możesz znaleźć innych wolontariuszy wokół siebie i nawiązać z nimi kontakt.</h5>
   </vaadin-vertical-layout>
   <vaadin-vertical-layout theme="spacing">
    <h1 style="align-self: center; margin: var(--lumo-space-m); padding: var(--lumo-space-m); margin-bottom: var(--lumo-space-xs); padding-bottom: var(--lumo-space-xs);">👍</h1>

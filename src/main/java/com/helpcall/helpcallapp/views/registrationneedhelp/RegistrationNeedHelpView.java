@@ -143,3 +143,5 @@ public class RegistrationNeedHelpView extends PolymerTemplate<RegistrationNeedHe
     }
 
 }
+
+// ustawić wybór koordynatów jako obowiązkowy

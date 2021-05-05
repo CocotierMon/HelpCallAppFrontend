@@ -34,7 +34,7 @@ public class MyNeedListView extends PolymerTemplate<MyNeedListViewModel> {
 
     public MyNeedListView(InstitutionBackendService institutionBackendService) {
 
-        List<NeedDto> needs = institutionBackendService.getInstitutionsNeeds(15L);
+        List<NeedDto> needs = institutionBackendService.getInstitutionsNeeds(14L);
         // implementacja: metoda pobierająca potrzeby zalogowanego uzytkownika
 
         Grid<NeedDto> vaadinGrid = new Grid<>(NeedDto.class);
@@ -54,4 +54,7 @@ public class MyNeedListView extends PolymerTemplate<MyNeedListViewModel> {
 
     // dodać możliwość sprawdzenia, który wolontariusz jest przypisany do realizacji potrzeby i możliwość
     // wysłania do niego wiadomości prywatnej
+    // dodać możliwość potwierdzania wykonania zadania przez wolontaiusza,
+    // w odpowiedzi na jego prośbę o zatwierdzenie zakończenia realizacji potrzeby
+    // wyświetlanie potrzeb z listy, które mają zakończyć się w określonym dniu - dodanie funkcjonalności
 }

@@ -86,3 +86,4 @@ public class FindOnMapInNeedSideView extends PolymerTemplate<FindOnMapInNeedSide
 }
 
 // stworzyć sposób na komunikowanie się zalogowanej instytucji z wybranym na mapie wolontariuszem
+// dodać możliwość wybierania wolontariuszy dostępnych w wybranym czasie

@@ -186,3 +186,4 @@ public class NewNeedView extends PolymerTemplate<NewNeedViewModel> implements Ob
 }
 
 // ograniczenie możliwości wybierania daty realizacji potrzeby do dat przyszłych
+// oznaczanie miejsca realizacji jako obligatoryjne

@@ -130,3 +130,5 @@ public class RegistrationVolunteerView extends PolymerTemplate<RegistrationVolun
     }
 
 }
+
+// ustawić wybór koordynatów jako obowiązkowy

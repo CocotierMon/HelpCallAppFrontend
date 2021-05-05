@@ -39,7 +39,7 @@ public class WallOfGloryView extends PolymerTemplate<WallOfGloryViewModel> {
 
     public WallOfGloryView(VolunteerWallBackendService service) {
 
-        List<VolunteerWallDto> volunteerWallDtos = service.getVolunteersWall(22L);
+        List<VolunteerWallDto> volunteerWallDtos = service.getVolunteersWall(21L);
         //stworzyć metodę, która będzie tworzyć listę potrzeb wg id zalogowanego wolontariusza
 
         Grid<VolunteerWallDto> vaadinGrid = new Grid<>(VolunteerWallDto.class);
@@ -55,3 +55,7 @@ public class WallOfGloryView extends PolymerTemplate<WallOfGloryViewModel> {
 }
 
 // dodać możliwość skontaktowania się z instytucją, której potrzebę realizuje wolontariusz
+// dodać możliwość skontaktowania się z innymi wolontariuszami i poproszenia ich o pomoc w realizacji potrzeby
+// dodać możliwość ustawienia dni i godzin dostępności
+// potwierdzenie wykonania - kiedy zaznaczymy checkbox, instytucja ma otrzymywać prośbę o potwierdzenie zakończenia realizacji.
+// Po potwierdzeniu checkox będzie zablokowany
